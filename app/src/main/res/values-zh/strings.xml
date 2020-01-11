@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Lab1</string>
-    <string name="hello_message">你好！(en: Hello)</string>
+    <string name="app_name">Lab2</string>
+    <string name="title">看我的用户界面</string>
+    <string name="btn">请按这里</string>
+    <string name="ckbox">看这里！</string>
+    <string name="flagdescription">中国国旗</string>
+    <string name="swit">开关</string>
+    <string name="prompt">请输入</string>
+    <string name="hello_message">你好！</string>
     <string name="ButtonText">I\'m a button!</string>
 </resources>
