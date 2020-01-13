@@ -54,7 +54,7 @@
     <Switch
         android:id="@+id/switch1"
         android:layout_width="193dp"
-        android:layout_height="47dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/checkBox"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"

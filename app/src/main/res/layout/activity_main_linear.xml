@@ -36,9 +36,8 @@
         <CheckBox
             android:id="@+id/checkBox3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/ckbox"
-            android:layout_gravity="fill"
             android:layout_weight="1"/>
 
     </LinearLayout>
@@ -55,6 +54,7 @@
             android:layout_height="wrap_content"
             android:background="#0000"
             app:srcCompat="@drawable/flag"
+            android:contentDescription="@string/flagdescription"
             android:layout_gravity="fill"
             android:layout_weight="1"/>
         <Switch
