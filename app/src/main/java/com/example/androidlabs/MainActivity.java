@@ -19,10 +19,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_relative);
+        setContentView(R.layout.activity_main_grid);
 
         //added requirements for lab 2
-        Button btn=findViewById(R.id.button2);//change to btn 3 4 if needed
+        Button btn=findViewById(R.id.button3);//change to btn 3 4 if needed
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        CheckBox cb=(CheckBox) findViewById(R.id.checkBox);
-        Switch s=(Switch) findViewById(R.id.switch1);
-        //change cb 2 3, s 123 if needed
+        CheckBox cb=(CheckBox) findViewById(R.id.checkBox2);
+        Switch s=(Switch) findViewById(R.id.switch2);
+        //change cb 2 3, s 2 3 if needed
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             public void onCheckedChanged(final CompoundButton cBtn, final boolean isChecked){
                 class UndoListener implements View.OnClickListener{
@@ -40,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
                         cBtn.setChecked(!isChecked);
                     }
                 }
-                if(isChecked) {
-                    Snackbar.make(findViewById(R.id.rl), R.string.on, Snackbar.LENGTH_SHORT).setAction(R.string.undo, new UndoListener()).show();
+                if(isChecked) {//change rl to gr li if needed
+                    Snackbar.make(findViewById(R.id.gr), R.string.on, Snackbar.LENGTH_SHORT).setAction(R.string.undo, new UndoListener()).show();
                 }
                 else {
-                    Snackbar.make(findViewById(R.id.rl), R.string.off, Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(R.id.gr), R.string.off, Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
@@ -55,11 +55,11 @@ public class MainActivity extends AppCompatActivity {
                         cBtn.setChecked(!isChecked);
                     }
                 }
-                if(isChecked) {
-                    Snackbar.make(findViewById(R.id.rl), R.string.on, Snackbar.LENGTH_SHORT).setAction(R.string.undo, new UndoListener()).show();
+                if(isChecked) {//change rl to gr li if needed
+                    Snackbar.make(findViewById(R.id.gr), R.string.on, Snackbar.LENGTH_SHORT).setAction(R.string.undo, new UndoListener()).show();
                 }
                 else {
-                    Snackbar.make(findViewById(R.id.rl), R.string.off, Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(findViewById(R.id.gr), R.string.off, Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
