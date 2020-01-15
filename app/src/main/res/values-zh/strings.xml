@@ -9,4 +9,8 @@
     <string name="prompt">请输入</string>
     <string name="hello_message">你好！</string>
     <string name="ButtonText">I\'m a button!</string>
+    <string name="toast_message">更多信息</string>
+    <string name="off">已关闭</string>
+    <string name="on">已开启</string>
+    <string name="undo">不干了</string>
 </resources>

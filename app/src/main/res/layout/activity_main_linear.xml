@@ -31,7 +31,8 @@
             android:layout_height="wrap_content"
             android:text="@string/btn"
             android:layout_gravity="fill"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:onClick="@string/toast_message"/>
 
         <CheckBox
             android:id="@+id/checkBox3"
@@ -59,6 +60,7 @@
             android:layout_gravity="fill"
             android:layout_weight="1"/>
         <Switch
+            android:id="@+id/switch3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/swit"

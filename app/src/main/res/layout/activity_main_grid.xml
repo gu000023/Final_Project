@@ -24,7 +24,8 @@
         android:layout_row="1"
         android:layout_column="0"
         android:layout_gravity="start"
-        android:text="@string/btn" />
+        android:text="@string/btn"
+        android:onClick="@string/toast_message"/>
 
     <CheckBox
         android:id="@+id/checkBox2"
@@ -33,7 +34,8 @@
         android:layout_row="1"
         android:layout_column="1"
 
-        android:text="@string/ckbox" />
+        android:text="@string/ckbox"
+        />
 
     <ImageButton
         android:id="@+id/imageButton2"
