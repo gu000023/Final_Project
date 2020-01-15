@@ -56,7 +56,6 @@
         android:layout_height="40dp"
         android:layout_below="@+id/checkBox"
         android:layout_alignParentEnd="true"
-
         android:layout_toEndOf="@id/trueCentre"
         android:text="@string/swit" />
 

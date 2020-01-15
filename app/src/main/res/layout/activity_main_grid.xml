@@ -28,11 +28,11 @@
 
     <CheckBox
         android:id="@+id/checkBox2"
-        android:layout_width="216dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="1"
         android:layout_column="1"
-        android:layout_gravity="fill"
+
         android:text="@string/ckbox" />
 
     <ImageButton
@@ -59,11 +59,11 @@
 
     <Switch
         android:id="@+id/switch2"
-        android:layout_width="174dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="2"
         android:layout_column="1"
-
+        android:layout_gravity="fill_horizontal"
         android:text="@string/swit" />
 
 </GridLayout>
