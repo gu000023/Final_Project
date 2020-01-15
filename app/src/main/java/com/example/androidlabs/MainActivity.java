@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_grid);
+        setContentView(R.layout.activity_main_relative);
 
         //added requirements for lab 2
         Button btn=findViewById(R.id.button3);//change to btn 3 4 if needed
@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        CheckBox cb=(CheckBox) findViewById(R.id.checkBox2);
-        Switch s=(Switch) findViewById(R.id.switch2);
+        CheckBox cb=(CheckBox) findViewById(R.id.checkBox);
+        Switch s=(Switch) findViewById(R.id.switch1);
         //change cb 2 3, s 2 3 if needed
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             public void onCheckedChanged(final CompoundButton cBtn, final boolean isChecked){

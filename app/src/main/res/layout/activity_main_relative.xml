@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/rl">
+    android:id="@+id/gr">
 
     <View android:id="@+id/trueCentre"
         android:layout_width="0dp"
@@ -20,7 +20,7 @@
         android:textSize="30sp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button3"
         android:layout_width="204dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#0000"
-        android:layout_below="@id/button2"
+        android:layout_below="@id/button3"
         android:contentDescription="@string/flagdescription"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@id/trueCentre"
