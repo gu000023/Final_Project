@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Lab2</string>
+    <string name="app_name">Lab3</string>
     <string name="title">看我的用户界面</string>
     <string name="btn">请按这里</string>
     <string name="ckbox">看这里！</string>

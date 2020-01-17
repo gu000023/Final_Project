@@ -72,4 +72,5 @@
         android:gravity="start|top"
         android:hint="@string/prompt"
         android:inputType="textPersonName|textCapWords" />
+
 </RelativeLayout>
