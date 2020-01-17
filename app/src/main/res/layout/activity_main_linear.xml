@@ -22,7 +22,7 @@
         >
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/button31"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn"
@@ -31,7 +31,7 @@
             android:onClick="@string/toast_message"/>
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/checkBox1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/ckbox"
@@ -56,7 +56,7 @@
             android:layout_gravity="fill"
             android:layout_weight="1"/>
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/switch11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/swit"

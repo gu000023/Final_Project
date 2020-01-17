@@ -19,7 +19,7 @@
         android:layout_columnSpan="2"/>
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button31"
         android:layout_width="194dp"
         android:layout_height="wrap_content"
         android:layout_row="1"
@@ -29,7 +29,7 @@
         android:onClick="@string/toast_message"/>
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="1"
@@ -61,7 +61,7 @@
         android:inputType="textPersonName|textCapWords" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/switch11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="2"

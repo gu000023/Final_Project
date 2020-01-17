@@ -13,4 +13,18 @@
     <string name="off">已关闭</string>
     <string name="on">已开启</string>
     <string name="undo">不干了</string>
+
+    <!--lab3 below-->
+    <string name="To_enter">请输入邮箱:</string>
+    <string name="Type_email">邮箱</string>
+    <string name="To_enter_pass">请输入密码：</string>
+    <string name="Login">登录</string>
+
+    <string name="profile">你的账户</string>
+    <string name="yourname">姓名:</string>
+    <string name="name_hint">请输入</string>
+    <string name="youremail">邮箱:</string>
+    <string name="email_hint">请输入</string>
+    <string name="yourpicture">图片：</string>
+    <string name="pictureprompt">点击按钮截取图片</string>
 </resources>

@@ -12,4 +12,20 @@
     <string name="off">The switch is now off</string>
     <string name="on">The switch is now on</string>
     <string name="undo">UNDO</string>
+
+    <!--lab 3 below-->
+    <string name="To_enter">Enter your email address:</string>
+    <string name="Type_email">Type email here</string>
+    <string name="To_enter_pass">Type your password:</string>
+    <string name="Login">LOGIN</string>
+
+    <string name="profile">Your profile</string>
+    <string name="yourname">Your name:</string>
+    <string name="name_hint">Enter your name</string>
+    <string name="youremail">Your email:</string>
+    <string name="email_hint">Enter your email</string>
+    <string name="yourpicture">Your picture:</string>
+    <string name="pictureprompt">Click the button above to take a picture</string>
+
+
 </resources>
