@@ -27,4 +27,9 @@
     <string name="email_hint">请输入</string>
     <string name="yourpicture">图片：</string>
     <string name="pictureprompt">点击按钮截取图片</string>
+
+    <string name="gotochat">去聊天</string>
+    <string name="send">发送</string>
+    <string name="typehere">键入</string>
+    <string name="receive">接收</string>
 </resources>

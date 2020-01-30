@@ -21,7 +21,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
     private String msg;
-    private String pref="pref";
+    private String pref="prefs";
     private SharedPreferences sp;
 
     @SuppressLint("WrongConstant")
@@ -34,14 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
         super.onResume();
         EditText get=(EditText)findViewById(R.id.editText4);
-        get.setText(getSharedPreferences(pref,Context.MODE_APPEND).getString("Email",""));
+        get.setText(getSharedPreferences(pref,Context.MODE_PRIVATE).getString("Email",""));
 
         //lab 3 set
         btn.setOnClickListener((v)-> {
             onPause();
             //lastly added func
             Intent goToProfile = new Intent(MainActivity.this, ProfileActivity.class);
-            goToProfile.putExtra("Email", getSharedPreferences(pref,Context.MODE_APPEND).getString("Email",""));
+            goToProfile.putExtra("Email", getSharedPreferences(pref,Context.MODE_PRIVATE).getString("Email",""));
             startActivity(goToProfile);
 
         });
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         EditText et=(EditText)findViewById(R.id.editText4);
         SharedPreferences sharedPreferences = getSharedPreferences(pref, MODE_PRIVATE);
+        //SharedPreferences.getString("Login","email@domain.com");
         SharedPreferences.Editor se = sharedPreferences.edit();
         se.putString("Email", et.getText().toString().equals("")?"":et.getText().toString()).commit();
         //System.out.println("hello");

@@ -2,6 +2,7 @@ package com.example.androidlabs;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -9,6 +10,7 @@ import android.media.Image;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -17,6 +19,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageButton mImageButton;
     private static final String ACTIVITY_NAME = "PROFILE_ACTIVITY";
     private String pref="pref";
+    private SharedPreferences sp;
 //oncreate, onstart, onresume, take photo to onpause, onstop, onactivityresults, oncreate, onresume, back? ondestroy,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,13 @@ public class ProfileActivity extends AppCompatActivity {
         String msg = fromMain.getStringExtra("Email");
         EditText et = (EditText) findViewById(R.id.editText6);
         et.setText(msg);
+
+        //lab 4 below
+        Button b=(Button) findViewById(R.id.button4);
+        b.setOnClickListener((v)->{
+            Intent goToProfile = new Intent(ProfileActivity.this, ChatRoomActivity.class);
+            startActivity(goToProfile);
+        });
     }
 
     @Override
