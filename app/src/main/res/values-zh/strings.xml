@@ -32,4 +32,7 @@
     <string name="send">发送</string>
     <string name="typehere">键入</string>
     <string name="receive">接收</string>
+
+    <string name="delete">删除此项</string>
+    <string name="ask">确定删除？</string>
 </resources>
