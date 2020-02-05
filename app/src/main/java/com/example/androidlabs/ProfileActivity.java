@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.media.Image;
 import android.os.Bundle;
@@ -58,6 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
         b.setOnClickListener((v)->{
             Intent goToProfile = new Intent(ProfileActivity.this, ChatRoomActivity.class);
             startActivity(goToProfile);
+
         });
     }
 
