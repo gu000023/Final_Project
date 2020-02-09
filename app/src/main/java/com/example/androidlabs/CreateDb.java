@@ -19,7 +19,7 @@ public class CreateDb extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db){
-        db.execSQL("CREATE TABLE " + TABLE_NAME + "("+COL_ID+"INTEGER PRIMARY KEY AUTOINCREMENT, "
+        db.execSQL("CREATE TABLE " + TABLE_NAME + "("+COL_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COL_SEND + " TEXT,"
                 + COL_RECEIVE  + " TEXT"+")");
         //System.out.println("hello 123333");//testing
