@@ -61,6 +61,13 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(goToProfile);
 
         });
+
+        //lab6 below
+        Button bt=(Button) findViewById(R.id.button7);
+        bt.setOnClickListener((v)->{
+            Intent goToProfile=new Intent(ProfileActivity.this,WeatherForecast.class);
+            startActivity(goToProfile);
+        });
     }
 
     @Override
