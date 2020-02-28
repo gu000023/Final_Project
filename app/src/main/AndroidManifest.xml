@@ -3,6 +3,8 @@
     package="com.example.androidlabs">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--lab 6 watch line below-->
+    <uses-feature android:name="android.hardware.type.watch"/>
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />

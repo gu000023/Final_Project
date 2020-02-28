@@ -189,10 +189,10 @@ Log.e("Exception", e.getMessage());
         {
             Log.d("dd9","djej");
             Log.i("HTTP", fromDoInBackground);
-            tv7.setText(tempNow);
-            tv13.setText(min);
-            tv14.setText(max);
-            tv15.setText(UV);
+            tv7.setText("Currently: "+tempNow);
+            tv13.setText("Minimum: "+min);
+            tv14.setText("Maximum: "+max);
+            tv15.setText("UV: "+UV);
             im.setImageBitmap(bm);
 
             ProgressBar pb=(ProgressBar) findViewById(R.id.progressBar);
