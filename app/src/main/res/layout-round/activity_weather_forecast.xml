@@ -8,9 +8,10 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/textView7"
@@ -18,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:layout_below="@id/imageView3"
-        android:gravity="center"/>
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/textView13"
@@ -26,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:layout_below="@id/textView7"
-        android:gravity="center"/>
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/textView14"
@@ -34,7 +35,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:layout_below="@id/textView13"
-        android:gravity="center"/>
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/textView15"
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:layout_below="@id/textView14"
-        android:gravity="center"/>
+        android:layout_centerHorizontal="true"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
