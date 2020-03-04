@@ -144,6 +144,7 @@ public class WeatherForecast extends AppCompatActivity {
                                     image.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
                                     outputStream.flush();
                                     outputStream.close();
+                                    Log.d("no img","download img");
                                 }
 
                             } else {
