@@ -54,12 +54,20 @@ public class ChatRoomActivity extends AppCompatActivity implements DetailsFragme
 
         //lab7 below
         boolean isPhone=findViewById(R.id.fragmentLocation)==null;
-        ListView theList=findViewById(R.id.lv);
+        ListView theList=(ListView)findViewById(R.id.lv);
 
         theList.setOnItemClickListener((list,view,position,id)->{
+            //
+            Bundle dataToPass=new Bundle();
+            dataToPass.putString("msg",new myListAdapter().getItem(position).getMessage());
+            dataToPass.putLong("ID",new myListAdapter().getItemId(position));
+            dataToPass.putBoolean("issent",new myListAdapter().getItem(position).isSent());
+            new DetailsFragment().setArguments(dataToPass);
+            //
             if(isPhone){
                 //Intent gotoFragment=new Intent(ChatRoomActivity.this,DetailsFragment.class);
                 Intent gotoFragment=new Intent(ChatRoomActivity.this,EmptyActivity.class);
+                gotoFragment.putExtras(dataToPass);
                 startActivity(gotoFragment);
                 //EmptyActivity parent = (EmptyActivity) getActivity();
                 //Intent backToFragmentExample = new Intent();
@@ -70,11 +78,12 @@ public class ChatRoomActivity extends AppCompatActivity implements DetailsFragme
                 Log.d("isphone","isphone");
             }else{
                 Log.d("istab","istab");
-                FragmentManager fm=getSupportFragmentManager();
+               FragmentManager fm=getSupportFragmentManager();
                 DetailsFragment parent= new DetailsFragment();
                 fm.beginTransaction().replace(R.id.fragmentLocation,parent).commit();
             }
         });
+
         ListView listview = (ListView) findViewById(R.id.lv);
         //send
         btn = (Button) findViewById(R.id.button5);

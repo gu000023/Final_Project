@@ -29,6 +29,7 @@ public class DetailsFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
     private AppCompatActivity parentActivity;
+    private Bundle dataFromActivity;
 
     public DetailsFragment() {
         // Required empty public constructor
@@ -39,6 +40,7 @@ public class DetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        dataFromActivity=getArguments();
         View firstView=inflater.inflate(R.layout.fragment_details, container, false);
         TextView t1=(TextView)firstView.findViewById(R.id.t1);
         t1.setText(/**getArguments().getString("unknown2")*/"hello");//settext setchecked //getarg is bundle
