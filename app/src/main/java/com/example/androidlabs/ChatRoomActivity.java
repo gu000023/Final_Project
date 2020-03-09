@@ -49,6 +49,9 @@ public class ChatRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
 
+        //lab7 below
+        boolean isPhone=findViewById(R.id.fragmentLocation)==null;
+
         ListView listview = (ListView) findViewById(R.id.lv);
         //send
         btn = (Button) findViewById(R.id.button5);
