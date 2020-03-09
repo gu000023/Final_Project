@@ -19,6 +19,7 @@ public class EmptyActivity extends AppCompatActivity implements DetailsFragment.
         //if(findViewById(R.id.fragmentLocation)==null) {
             FragmentManager fm = getSupportFragmentManager();
             DetailsFragment parent = new DetailsFragment();
+            parent.setArguments(ChatRoomActivity.dataToPass);
             fm.beginTransaction().replace(R.id.fl, parent).commit();
         //}
     }

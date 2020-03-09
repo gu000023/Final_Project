@@ -28,8 +28,9 @@ import android.widget.TextView;
 public class DetailsFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
-    private AppCompatActivity parentActivity;
-    private Bundle dataFromActivity;
+    private static AppCompatActivity parentActivity;
+    public static Bundle dataFromActivity;
+    private long id;
 
     public DetailsFragment() {
         // Required empty public constructor
@@ -41,20 +42,21 @@ public class DetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         dataFromActivity=getArguments();
+        id=dataFromActivity.getLong("ID");
         View firstView=inflater.inflate(R.layout.fragment_details, container, false);
         TextView t1=(TextView)firstView.findViewById(R.id.t1);
-        t1.setText(/**getArguments().getString("unknown2")*/"hello");//settext setchecked //getarg is bundle
+        t1.setText(dataFromActivity.getString("msg"));//settext setchecked //getarg is bundle
         TextView t2=(TextView)firstView.findViewById(R.id.t2);
-        t2.setText(/**getArguments().getString("unknown2")*/"hi");
+        t2.setText("ID= "+id);
         CheckBox cb=(CheckBox)firstView.findViewById(R.id.checkBox2);
-        cb.setChecked(Message.issent);
+        cb.setChecked(dataFromActivity.getBoolean("issent"));
 
-        Bundle b=new Bundle();
-        b.putString("Message1",t1.getText().toString());
-        b.putString("Message2",t2.getText().toString());
-        b.putBoolean("issent",Message.issent);
-        Log.d("frag set arg","set arg");
-        new DetailsFragment().setArguments(b);
+        //Bundle b=new Bundle();
+        //b.putString("Message1",t1.getText().toString());
+        //b.putString("Message2",t2.getText().toString());
+        //b.putBoolean("issent",Message.issent);
+        //Log.d("frag set arg","set arg");
+        //new DetailsFragment().setArguments(b);
 
         Button hide=(Button)firstView.findViewById(R.id.button8);
         hide.setOnClickListener(clk->{
@@ -74,8 +76,9 @@ public class DetailsFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
-        parentActivity=(AppCompatActivity)context;
+
         super.onAttach(context);
+        parentActivity=(AppCompatActivity)context;
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {

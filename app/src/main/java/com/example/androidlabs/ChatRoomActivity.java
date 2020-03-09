@@ -2,6 +2,7 @@ package com.example.androidlabs;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.ContentValues;
@@ -46,6 +47,9 @@ public class ChatRoomActivity extends AppCompatActivity implements DetailsFragme
     private BaseAdapter adapter = new myListAdapter();
     SQLiteDatabase db;
 
+    private static DetailsFragment parent;
+    public static Bundle dataToPass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +62,17 @@ public class ChatRoomActivity extends AppCompatActivity implements DetailsFragme
 
         theList.setOnItemClickListener((list,view,position,id)->{
             //
-            Bundle dataToPass=new Bundle();
+            dataToPass=new Bundle();
             dataToPass.putString("msg",new myListAdapter().getItem(position).getMessage());
             dataToPass.putLong("ID",new myListAdapter().getItemId(position));
             dataToPass.putBoolean("issent",new myListAdapter().getItem(position).isSent());
-            new DetailsFragment().setArguments(dataToPass);
+            //new DetailsFragment().setArguments(dataToPass);
+            //Bundle test=new DetailsFragment().getArguments();
             //
             if(isPhone){
                 //Intent gotoFragment=new Intent(ChatRoomActivity.this,DetailsFragment.class);
                 Intent gotoFragment=new Intent(ChatRoomActivity.this,EmptyActivity.class);
-                gotoFragment.putExtras(dataToPass);
+                //gotoFragment.putExtras(dataToPass);
                 startActivity(gotoFragment);
                 //EmptyActivity parent = (EmptyActivity) getActivity();
                 //Intent backToFragmentExample = new Intent();
@@ -79,7 +84,9 @@ public class ChatRoomActivity extends AppCompatActivity implements DetailsFragme
             }else{
                 Log.d("istab","istab");
                FragmentManager fm=getSupportFragmentManager();
-                DetailsFragment parent= new DetailsFragment();
+                parent= new DetailsFragment();
+                parent.setArguments(dataToPass);
+                //Bundle test=parent.getArguments();
                 fm.beginTransaction().replace(R.id.fragmentLocation,parent).commit();
             }
         });
@@ -155,6 +162,10 @@ public class ChatRoomActivity extends AppCompatActivity implements DetailsFragme
                             deleteMessage((int) id);
                             //
                             send_receive.remove(position);
+                            if(!isPhone){
+                                Fragment f=ChatRoomActivity.parent;
+                                getSupportFragmentManager().beginTransaction().remove(ChatRoomActivity.parent).commit();
+                            }
                             adapter.notifyDataSetChanged();
                         }
                     })
