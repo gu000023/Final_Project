@@ -2,14 +2,17 @@ package com.example.androidlabs;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,7 +38,7 @@ import static com.example.androidlabs.CreateDb.COL_ID;
 import static com.example.androidlabs.CreateDb.COL_SEND;
 import static com.example.androidlabs.CreateDb.COL_RECEIVE;
 
-public class ChatRoomActivity extends AppCompatActivity {
+public class ChatRoomActivity extends AppCompatActivity implements DetailsFragment.OnFragmentInteractionListener {
     ArrayList<Message> send_receive = new ArrayList<>();
     //ArrayList<Object> receive = new ArrayList<>();
     private Button btn;
@@ -51,7 +54,27 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         //lab7 below
         boolean isPhone=findViewById(R.id.fragmentLocation)==null;
+        ListView theList=findViewById(R.id.lv);
 
+        theList.setOnItemClickListener((list,view,position,id)->{
+            if(isPhone){
+                //Intent gotoFragment=new Intent(ChatRoomActivity.this,DetailsFragment.class);
+                Intent gotoFragment=new Intent(ChatRoomActivity.this,EmptyActivity.class);
+                startActivity(gotoFragment);
+                //EmptyActivity parent = (EmptyActivity) getActivity();
+                //Intent backToFragmentExample = new Intent();
+                //backToFragmentExample.putExtra(FragmentExample.ITEM_ID, dataFromActivity.getLong(FragmentExample.ITEM_ID ));
+
+                //parent.setResult(Activity.RESULT_OK, backToFragmentExample); //send data back to FragmentExample in onActivityResult()
+                //parent.finish(); //go back
+                Log.d("isphone","isphone");
+            }else{
+                Log.d("istab","istab");
+                FragmentManager fm=getSupportFragmentManager();
+                DetailsFragment parent= new DetailsFragment();
+                fm.beginTransaction().replace(R.id.fragmentLocation,parent).commit();
+            }
+        });
         ListView listview = (ListView) findViewById(R.id.lv);
         //send
         btn = (Button) findViewById(R.id.button5);
@@ -137,6 +160,11 @@ public class ChatRoomActivity extends AppCompatActivity {
             return true;
         });
         //listview.setAdapter(adapter);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
     class myListAdapter extends BaseAdapter {

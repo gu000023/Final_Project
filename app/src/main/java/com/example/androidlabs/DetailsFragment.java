@@ -4,11 +4,19 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
 
 /**
@@ -20,6 +28,7 @@ import android.view.ViewGroup;
 public class DetailsFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    private AppCompatActivity parentActivity;
 
     public DetailsFragment() {
         // Required empty public constructor
@@ -30,7 +39,28 @@ public class DetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_details, container, false);
+        View firstView=inflater.inflate(R.layout.fragment_details, container, false);
+        TextView t1=(TextView)firstView.findViewById(R.id.t1);
+        t1.setText(/**getArguments().getString("unknown2")*/"hello");//settext setchecked //getarg is bundle
+        TextView t2=(TextView)firstView.findViewById(R.id.t2);
+        t2.setText(/**getArguments().getString("unknown2")*/"hi");
+        CheckBox cb=(CheckBox)firstView.findViewById(R.id.checkBox2);
+        cb.setChecked(Message.issent);
+
+        Bundle b=new Bundle();
+        b.putString("Message1",t1.getText().toString());
+        b.putString("Message2",t2.getText().toString());
+        b.putBoolean("issent",Message.issent);
+        Log.d("frag set arg","set arg");
+        new DetailsFragment().setArguments(b);
+
+        Button hide=(Button)firstView.findViewById(R.id.button8);
+        hide.setOnClickListener(clk->{
+            Log.d("hide","hide");
+            parentActivity.getSupportFragmentManager().beginTransaction().remove(this).commit();
+        });
+
+        return firstView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -42,6 +72,7 @@ public class DetailsFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
+        parentActivity=(AppCompatActivity)context;
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;

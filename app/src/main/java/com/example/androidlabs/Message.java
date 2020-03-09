@@ -3,7 +3,7 @@ package com.example.androidlabs;
 class Message {
     long id;
     String message;
-    boolean issent;
+    static boolean issent;
 
     public Message(String message, boolean issent, long id){
         this.message=message;
