@@ -3,7 +3,7 @@ package com.example.androidlabs;
 class Message {
     long id;
     String message;
-    static boolean issent;
+    boolean issent;
 
     public Message(String message, boolean issent, long id){
         this.message=message;
@@ -20,6 +20,8 @@ class Message {
     public String getMessage(){
         return this.message;
     }
+
+    public boolean getSendReceive(){return this.issent;}
 
     public boolean isSent(){
         return this.issent;

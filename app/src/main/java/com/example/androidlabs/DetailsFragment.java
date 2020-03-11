@@ -44,6 +44,8 @@ public class DetailsFragment extends Fragment {
         dataFromActivity=getArguments();
         id=dataFromActivity.getLong("ID");
         View firstView=inflater.inflate(R.layout.fragment_details, container, false);
+        //Message m = getItem(position);
+        //View firstView = inflater.inflate((m.isSent()) ? R.layout.sender : R.layout.receiver, container, false);
         TextView t1=(TextView)firstView.findViewById(R.id.t1);
         t1.setText(dataFromActivity.getString("msg"));//settext setchecked //getarg is bundle
         TextView t2=(TextView)firstView.findViewById(R.id.t2);

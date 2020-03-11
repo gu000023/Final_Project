@@ -58,6 +58,7 @@ public class ChatRoomActivity extends AppCompatActivity implements DetailsFragme
 
         //lab7 below
         boolean isPhone=findViewById(R.id.fragmentLocation)==null;
+
         ListView theList=(ListView)findViewById(R.id.lv);
 
         theList.setOnItemClickListener((list,view,position,id)->{
@@ -72,7 +73,7 @@ public class ChatRoomActivity extends AppCompatActivity implements DetailsFragme
             if(isPhone){
                 //Intent gotoFragment=new Intent(ChatRoomActivity.this,DetailsFragment.class);
                 Intent gotoFragment=new Intent(ChatRoomActivity.this,EmptyActivity.class);
-                //gotoFragment.putExtras(dataToPass);
+                gotoFragment.putExtras(dataToPass);
                 startActivity(gotoFragment);
                 //EmptyActivity parent = (EmptyActivity) getActivity();
                 //Intent backToFragmentExample = new Intent();
@@ -83,7 +84,7 @@ public class ChatRoomActivity extends AppCompatActivity implements DetailsFragme
                 Log.d("isphone","isphone");
             }else{
                 Log.d("istab","istab");
-               FragmentManager fm=getSupportFragmentManager();
+                FragmentManager fm=getSupportFragmentManager();
                 parent= new DetailsFragment();
                 parent.setArguments(dataToPass);
                 //Bundle test=parent.getArguments();
@@ -136,6 +137,7 @@ public class ChatRoomActivity extends AppCompatActivity implements DetailsFragme
             newRowValues.put(CreateDb.COL_RECEIVE, msg1);
             long newId1=db.insert(CreateDb.TABLE_NAME,null, newRowValues);
             Message msgObj1=new Message(msg1,false,newId1);
+            //boolean sorr=msgObj1.getSendReceive();
             send_receive.add(msgObj1);
             new myListAdapter().notifyDataSetChanged();
             textTyped1.setText("");
