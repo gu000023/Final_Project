@@ -163,10 +163,12 @@ public class ChatRoomActivity extends AppCompatActivity implements DetailsFragme
                             //deleteMessage(send_receive.get(position));
                             deleteMessage((int) id);
                             //
-                            send_receive.remove(position);
+                                send_receive.remove(position);
                             if(!isPhone){
                                 Fragment f=ChatRoomActivity.parent;
-                                getSupportFragmentManager().beginTransaction().remove(ChatRoomActivity.parent).commit();
+                                if(f!=null) {
+                                    getSupportFragmentManager().beginTransaction().remove(ChatRoomActivity.parent).commit();
+                                }
                             }
                             adapter.notifyDataSetChanged();
                         }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+//import android.support.v4.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.util.Log;
@@ -63,7 +64,12 @@ public class DetailsFragment extends Fragment {
         Button hide=(Button)firstView.findViewById(R.id.button8);
         hide.setOnClickListener(clk->{
             Log.d("hide","hide");
-            parentActivity.getSupportFragmentManager().beginTransaction().remove(this).commit();
+            if (parentActivity.getSupportFragmentManager().findFragmentById(R.id.fl) != null) {
+                parentActivity.finish();
+            }
+            else {
+                parentActivity.getSupportFragmentManager().beginTransaction().remove(this).commit();
+            }
         });
 
         return firstView;
