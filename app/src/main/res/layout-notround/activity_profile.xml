@@ -90,4 +90,10 @@
         android:layout_height="wrap_content"
         android:text="@string/gotochat"
         android:layout_below="@id/textView12"/>
+    <Button
+        android:id="@+id/buttontb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to Toolbar page"
+        android:layout_below="@id/button4"/>
 </RelativeLayout>

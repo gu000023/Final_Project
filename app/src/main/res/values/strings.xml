@@ -42,4 +42,7 @@
     <string name="Send">is a send message</string>
     <string name="hidebtn">Hide</string>
 
+    <string name="open">open</string>
+    <string name="close">close</string>
+
 </resources>

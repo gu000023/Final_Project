@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:id="@+id/item01"
+        android:title="a. ChatPage"
+        android:icon="@drawable/row_send"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>  <!-- This uses showAsAction=always, so look at icon= parameter -->
+
+
+    <item android:id="@+id/item02"
+        android:orderInCategory="50"
+        android:icon="@drawable/row_receive"
+        app:showAsAction="always|collapseActionView"
+        android:title="b. WeatherForecast"/>    <!-- This uses showAsAction=always, so look at icon= parameter -->
+
+
+    <item android:id="@+id/item03"
+        android:icon="@drawable/icons8_shuffle_24"
+        android:title="c. Gobacktologinpage"
+        app:showAsAction="always"
+        android:orderInCategory="400"/> <!-- This uses showAsAction=never, so look at title= parameter -->
+</menu>

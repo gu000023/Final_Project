@@ -29,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
         Log.e(ProfileActivity.ACTIVITY_NAME,"In function: "+"Oncreate");
         //
             setContentView(R.layout.activity_profile);
+
     }
 
     public void onStart(){
@@ -54,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
         EditText et = (EditText) findViewById(R.id.editText6);
         et.setText(msg);
 
+
         //lab 4 below
         Button b=(Button) findViewById(R.id.button4);
         b.setOnClickListener((v)->{
@@ -70,23 +72,29 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         //lab8 below
-        Button btn9=(Button) findViewById(R.id.button9);
-        btn9.setOnClickListener((v)->{
+        Button goToolbar=(Button) findViewById(R.id.buttontb);
+        goToolbar.setOnClickListener((v)->{
             Intent go=new Intent(ProfileActivity.this,TestToolbar.class);
-            startActivityForResult(go,2);
+            startActivityForResult(go,500);
         });
+
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //
-        Log.e(ProfileActivity.ACTIVITY_NAME,"In function: "+"OnActivityResult");
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e(ProfileActivity.ACTIVITY_NAME, "In function: " + "OnActivityResult");
         //
+        if (requestCode == 500) {
+            finish();
+        }
         //hit back button and if will be omitted
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            mImageButton=(ImageButton) findViewById(R.id.imageButton4);
+            mImageButton = (ImageButton) findViewById(R.id.imageButton4);
             mImageButton.setImageBitmap(imageBitmap);
         }
     }
