@@ -1,10 +1,8 @@
 package com.example.finalproject;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import org.json.JSONArray;
@@ -19,30 +17,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-class TheGuardianQuery extends AsyncTask<String, Integer, String> {
+class TheGuardianQuery extends AsyncTask<String, Integer, List<TheGuardianArticle>> {
 
     private List<TheGuardianArticle> articles = new ArrayList<>();
     private URL url;
     private HttpURLConnection urlConnection;
     private InputStream response;
     private ProgressBar progressBar;
-    private Context context;
-    private ListView listView;
 
-    public TheGuardianQuery (Context context, ListView listView, ProgressBar progressBar) {
+    public TheGuardianQuery (ProgressBar progressBar) {
         super();
-        this.context = context;
-        this.listView = listView;
         this.progressBar = progressBar;
     }
 
-    public List<TheGuardianArticle> getArticles(){
-        return articles;
-    }
-
     @Override
-    protected String doInBackground(String... args) {
-
+    protected List<TheGuardianArticle> doInBackground(String... args) {
+        List<TheGuardianArticle> backArticles = new ArrayList<>();
         try {
 
             String searchUrl = "https://content.guardianapis.com/search?api-key=1fb36b70-1588-4259-b703-2570ea1fac6a&q=" + args[0];
@@ -67,17 +57,17 @@ class TheGuardianQuery extends AsyncTask<String, Integer, String> {
                 String publicationDate = anObject.getString("webPublicationDate");
                 String title = anObject.getString("webTitle");
                 String webUrl = anObject.getString("webUrl");
-                getArticles().add(new TheGuardianArticle(publicationDate, title, webUrl, i));
+                backArticles.add(new TheGuardianArticle(publicationDate, title, webUrl, i));
                 TimeUnit.MILLISECONDS.sleep(2);
                 publishProgress(i*100/results.length());
             }
             publishProgress(100);
 
         } catch (Exception e) {
-            Log.e("Error", e.getMessage());
+            Log.e("Error message: ", e.getMessage());
         }
 
-        return "Done";
+        return backArticles;
     }
 
     protected void onProgressUpdate(Integer ... args)
@@ -86,14 +76,11 @@ class TheGuardianQuery extends AsyncTask<String, Integer, String> {
         progressBar.setProgress(args[0]);
     }
 
-    protected void onPostExecute(String fromDoInBackground)
+    protected void onPostExecute(List<TheGuardianArticle> backArticles)
     {
-        Log.i("HTTP", fromDoInBackground);
-        ArticlesListAdapter myArticleListAdapter = new ArticlesListAdapter(context);
-        for (TheGuardianArticle element : getArticles()) {
-            myArticleListAdapter.getElements().add(element);
+        for (TheGuardianArticle element : backArticles) {
+            articles.add(element);
         }
-        listView.setAdapter(myArticleListAdapter);
         progressBar.setVisibility(View.INVISIBLE);
     }
 

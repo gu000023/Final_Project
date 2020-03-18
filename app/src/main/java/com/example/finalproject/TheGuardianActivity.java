@@ -2,42 +2,25 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.ExecutionException;
 
 //Author: Lilia Ramalho Martins
 //Student # 040952491
 public class TheGuardianActivity extends AppCompatActivity {
 
-    private URL url;
-    private HttpURLConnection urlConnection;
-    private InputStream response;
     private ListView listView;
     private ProgressBar progressBar;
     private EditText editText;
     private Button button;
+    private List<TheGuardianArticle> articles = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +35,19 @@ public class TheGuardianActivity extends AppCompatActivity {
         button.setOnClickListener((click) -> {
            String term = String.valueOf(editText.getText());
            term.trim();
-           TheGuardianQuery req = new TheGuardianQuery(this, listView, progressBar);
-           req.execute(term);
+           TheGuardianQuery req = new TheGuardianQuery(progressBar);
+            try {
+                articles = req.execute(term).get();
+            } catch (Exception e) {
+                Log.e("Error message: ", e.getMessage());
+            }
+
+            ArticlesListAdapter myArticleListAdapter = new ArticlesListAdapter(this);
+            for (TheGuardianArticle element : articles) {
+                myArticleListAdapter.getElements().add(element);
+            }
+            listView.setAdapter(myArticleListAdapter);
+
         });
 
     }
