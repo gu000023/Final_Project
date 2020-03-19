@@ -8,9 +8,11 @@ public class TheGuardianArticle {
     private String date = "";
     private String title = "";
     private String url = "";
-    int id;
+    private String sectionName = "";
+    String id;
+    private boolean starred = false;
 
-    public TheGuardianArticle(String date, String title, String url, int id) throws ParseException {
+    public TheGuardianArticle(String date, String title, String url, String id, String sectionName, boolean starred) throws ParseException {
         if (date != null && date != "") {
             if (date.charAt(date.length() - 1) == 'Z')
                 date = date.substring(0, date.length() - 1);
@@ -21,7 +23,9 @@ public class TheGuardianArticle {
         }
         this.title = title;
         this.url = url;
+        this.sectionName = sectionName;
         this.id = id;
+        this.starred = starred;
     }
 
     public String getDate() {
@@ -48,11 +52,27 @@ public class TheGuardianArticle {
         this.url = url;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public boolean isStarred() {
+        return starred;
+    }
+
+    public void setStarred(boolean starred) {
+        this.starred = starred;
+    }
+
+    public String getSectionName() {
+        return sectionName;
+    }
+
+    public void setSectionName(String sectionName) {
+        this.sectionName = sectionName;
     }
 }

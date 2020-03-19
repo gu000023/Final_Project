@@ -7,22 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".TheGuardianActivity">
 
-    <TextView
-        android:id="@+id/heading_line1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="The Guardian news article search" />
-
-    <TextView
-        android:id="@+id/heading_line2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Student: Lilia Ramalho Martins" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="14dp" />
-
     <ListView
         android:id="@+id/list_results"
         android:layout_width="match_parent"
@@ -33,7 +17,7 @@
         android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:layout_height="wrap_content" />
 
     <LinearLayout

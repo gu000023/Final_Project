@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -36,7 +37,8 @@ public class ArticlesListAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return getElements().get(position).getId();
+        //TODO see database id
+        return position;
     }
 
     @Override
@@ -49,6 +51,12 @@ public class ArticlesListAdapter extends BaseAdapter {
         articleTitleView.setText(itemArticle.getTitle());
         TextView articleDateView = newView.findViewById(R.id.articleDate);
         articleDateView.setText(itemArticle.getDate());
+        ImageButton starBtn = newView.findViewById(R.id.starButton);
+        if (itemArticle.isStarred())
+            starBtn.setImageResource(R.drawable.star_full);
+        else
+            starBtn.setImageResource(R.drawable.star_empty);
+        starBtn.setOnClickListener( new StarButtonOnClickListener(itemArticle));
         return newView;
     }
 

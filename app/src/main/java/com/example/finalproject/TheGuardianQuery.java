@@ -24,10 +24,13 @@ class TheGuardianQuery extends AsyncTask<String, Integer, List<TheGuardianArticl
     private HttpURLConnection urlConnection;
     private InputStream response;
     private ProgressBar progressBar;
+    private OnQueryCompleted listener;
 
-    public TheGuardianQuery (ProgressBar progressBar) {
+
+    public TheGuardianQuery (ProgressBar progressBar, OnQueryCompleted listener) {
         super();
         this.progressBar = progressBar;
+        this.listener = listener;
     }
 
     @Override
@@ -54,12 +57,15 @@ class TheGuardianQuery extends AsyncTask<String, Integer, List<TheGuardianArticl
             JSONArray results = TGresponse.getJSONArray("results");
             for (int i = 0; i < results.length(); i++) {
                 JSONObject anObject = results.getJSONObject(i);
+                String id = anObject.getString("id");
                 String publicationDate = anObject.getString("webPublicationDate");
                 String title = anObject.getString("webTitle");
                 String webUrl = anObject.getString("webUrl");
-                backArticles.add(new TheGuardianArticle(publicationDate, title, webUrl, i));
-                TimeUnit.MILLISECONDS.sleep(2);
-                publishProgress(i*100/results.length());
+                String sectionName = anObject.getString("sectionName");
+                backArticles.add(new TheGuardianArticle(publicationDate, title, webUrl, id, sectionName,false));
+                TimeUnit.MILLISECONDS.sleep(50);
+                int progress = i*100/results.length();
+                publishProgress(progress);
             }
             publishProgress(100);
 
@@ -73,7 +79,8 @@ class TheGuardianQuery extends AsyncTask<String, Integer, List<TheGuardianArticl
     protected void onProgressUpdate(Integer ... args)
     {
         progressBar.setVisibility(View.VISIBLE);
-        progressBar.setProgress(args[0]);
+        int progress = args[0];
+        progressBar.setProgress(progress);
     }
 
     protected void onPostExecute(List<TheGuardianArticle> backArticles)
@@ -81,6 +88,7 @@ class TheGuardianQuery extends AsyncTask<String, Integer, List<TheGuardianArticl
         for (TheGuardianArticle element : backArticles) {
             articles.add(element);
         }
+        listener.onQueryCompleted(articles);
         progressBar.setVisibility(View.INVISIBLE);
     }
 
