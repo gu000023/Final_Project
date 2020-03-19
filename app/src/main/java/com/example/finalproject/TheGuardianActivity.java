@@ -23,7 +23,6 @@ public class TheGuardianActivity extends AppCompatActivity implements OnQueryCom
     private ProgressBar progressBar;
     private EditText editText;
     private Button button;
-    //private List<TheGuardianArticle> articles = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,6 +1,7 @@
 package com.example.finalproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,16 @@ public class ArticlesListAdapter extends BaseAdapter {
         else
             starBtn.setImageResource(R.drawable.star_empty);
         starBtn.setOnClickListener( new StarButtonOnClickListener(itemArticle));
+
+        newView.setOnClickListener((click) -> {
+            Intent goToDetails = new Intent(context, NewsDetails.class);
+            goToDetails.putExtra("SECTION", itemArticle.getSectionName());
+            goToDetails.putExtra("DATE", itemArticle.getDate());
+            goToDetails.putExtra("TITLE", itemArticle.getTitle());
+            goToDetails.putExtra("URL", itemArticle.getUrl());
+            context.startActivity(goToDetails);
+        });
+
         return newView;
     }
 
