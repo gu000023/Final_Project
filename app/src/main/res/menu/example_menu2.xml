@@ -11,6 +11,7 @@
     </group>
     <group>
         <item android:id="@+id/item12"
+            android:icon="@drawable/question"
             android:title="Help"
             android:orderInCategory="200"
             app:showAsAction="withText"/>

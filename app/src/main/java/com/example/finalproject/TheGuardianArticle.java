@@ -9,7 +9,7 @@ public class TheGuardianArticle {
     private String title = "";
     private String url = "";
     private String sectionName = "";
-    String id;
+    private String id = "";
     private boolean starred = false;
 
     public TheGuardianArticle(String date, String title, String url, String id, String sectionName, boolean starred) throws ParseException {

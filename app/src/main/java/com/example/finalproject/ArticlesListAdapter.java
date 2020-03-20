@@ -1,7 +1,10 @@
 package com.example.finalproject;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,10 @@ import java.util.List;
 public class ArticlesListAdapter extends BaseAdapter {
 
     private Context context;
+    private MyOpener dbHelper;
+    private SQLiteDatabase db;
+    private Cursor results;
+    private ContentValues newRowValues;
     private List<TheGuardianArticle> elements = new ArrayList<>();
 
     public ArticlesListAdapter(Context context) {
@@ -55,9 +62,22 @@ public class ArticlesListAdapter extends BaseAdapter {
         ImageButton starBtn = newView.findViewById(R.id.starButton);
         if (itemArticle.isStarred())
             starBtn.setImageResource(R.drawable.star_full);
-        else
-            starBtn.setImageResource(R.drawable.star_empty);
-        starBtn.setOnClickListener( new StarButtonOnClickListener(itemArticle));
+        else {
+            dbHelper = new MyOpener(context);
+            db = dbHelper.getWritableDatabase();
+            String [] columns = {MyOpener.COL_WEB_ID};
+            results = db.query(false,
+                    MyOpener.TABLE_NAME,
+                    columns,
+                    MyOpener.COL_WEB_ID + " like ?",
+                    new String[] {itemArticle.getId()},
+                    null, null, null, null);
+            if (results.getCount() == 0)
+                starBtn.setImageResource(R.drawable.star_empty);
+            else
+                starBtn.setImageResource(R.drawable.star_full);
+        }
+        starBtn.setOnClickListener( new StarButtonOnClickListener(itemArticle, context));
 
         newView.setOnClickListener((click) -> {
             Intent goToDetails = new Intent(context, NewsDetails.class);
