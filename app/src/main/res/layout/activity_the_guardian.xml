@@ -7,41 +7,72 @@
     android:layout_height="match_parent"
     tools:context=".TheGuardianActivity">
 
-    <ListView
-        android:id="@+id/list_results"
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1" />
-
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:visibility="visible"
-        android:layout_height="wrap_content" />
-
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:id="@+id/toolbar"/>
 
-        <EditText
-            android:id="@+id/editText_term"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:openDrawer="start">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/list_results"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1" >
+
+            </ListView>
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:visibility="visible"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editText_term"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="" />
+
+                <Button
+                    android:id="@+id/search_term_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Search" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="" />
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/header_layout"
+            app:menu="@menu/example_menu2"
+            android:id="@+id/nav_view"/>
 
-        <Button
-            android:id="@+id/search_term_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Search" />
-
-
-    </LinearLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 </LinearLayout>

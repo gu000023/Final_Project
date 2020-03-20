@@ -1,8 +1,16 @@
 package com.example.finalproject;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,17 +20,20 @@ import android.widget.ProgressBar;
 import java.util.List;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+
 import static android.widget.Toast.LENGTH_LONG;
 
 
 //Author: Lilia Ramalho Martins
 //Student # 040952491
-public class TheGuardianActivity extends AppCompatActivity implements OnQueryCompleted {
+public class TheGuardianActivity extends AppCompatActivity implements OnQueryCompleted, NavigationView.OnNavigationItemSelectedListener {
 
     private ListView listView;
     private ProgressBar progressBar;
     private EditText editText;
     private Button button;
+    private Toolbar myToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +45,19 @@ public class TheGuardianActivity extends AppCompatActivity implements OnQueryCom
         progressBar = (ProgressBar)findViewById(R.id.progressBar2);
         progressBar.setVisibility(View.INVISIBLE);
         listView = (ListView)findViewById(R.id.list_results);
+
+        myToolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(myToolbar);
+
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
+                drawer, myToolbar, R.string.open, R.string.close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         button.setOnClickListener((click) -> {
            String term = String.valueOf(editText.getText());
@@ -60,5 +84,48 @@ public class TheGuardianActivity extends AppCompatActivity implements OnQueryCom
             myArticleListAdapter.getElements().add(element);
         }
         listView.setAdapter(myArticleListAdapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        String message = null;
+        switch(item.getItemId())
+        {
+            //what to do when the menu item is selected:
+            case R.id.item1:
+                message = "You clicked on item 1";
+                break;
+        }
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.example_menu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        String message = null;
+
+        switch(item.getItemId())
+        {
+            case R.id.item11:
+                Toast.makeText(this, "message", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.item12:
+                Toast.makeText(this, "message", Toast.LENGTH_LONG).show();
+                break;
+        }
+
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        return false;
     }
 }
