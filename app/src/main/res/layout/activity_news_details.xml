@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".NewsDetails">
+    tools:context=".NewsDetailsActivity">
 
     <TextView
         android:id="@+id/newsDetails_section"

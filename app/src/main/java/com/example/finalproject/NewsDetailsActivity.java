@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
-public class NewsDetails extends AppCompatActivity {
+public class NewsDetailsActivity extends AppCompatActivity {
 
     private TextView sectionTextView;
     private TextView dateTextView;

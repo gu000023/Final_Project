@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -49,7 +50,6 @@ public class TheGuardianActivity extends AppCompatActivity implements OnQueryCom
         myToolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
                 drawer, myToolbar, R.string.open, R.string.close);
@@ -88,15 +88,14 @@ public class TheGuardianActivity extends AppCompatActivity implements OnQueryCom
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        String message = null;
         switch(item.getItemId())
         {
             //what to do when the menu item is selected:
             case R.id.item1:
-                message = "You clicked on item 1";
+                Intent gotToStarred = new Intent(TheGuardianActivity.this, StarredActivity.class);
+                startActivity(gotToStarred);
                 break;
         }
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         return true;
     }
 
@@ -111,12 +110,11 @@ public class TheGuardianActivity extends AppCompatActivity implements OnQueryCom
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        String message = null;
-
         switch(item.getItemId())
         {
             case R.id.item11:
-                Toast.makeText(this, "message", Toast.LENGTH_LONG).show();
+                Intent gotToStarred = new Intent(TheGuardianActivity.this, StarredActivity.class);
+                startActivity(gotToStarred);
                 break;
             case R.id.item12:
                 Toast.makeText(this, "message", Toast.LENGTH_LONG).show();

@@ -2,7 +2,6 @@ package com.example.finalproject;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,18 +10,19 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArticlesListAdapter extends BaseAdapter {
+public class StarredListAdapter extends BaseAdapter {
 
     private Context context;
     private MyOpener dbHelper;
     private SQLiteDatabase db;
-    private Cursor results;
     private List<TheGuardianArticle> elements = new ArrayList<>();
 
-    public ArticlesListAdapter(Context context) {
+    public StarredListAdapter(Context context) {
         super();
         this.context = context;
     }
@@ -51,30 +51,32 @@ public class ArticlesListAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         TheGuardianArticle itemArticle = (TheGuardianArticle) getItem(position);
         View newView;
-        newView = inflater.inflate(R.layout.row_layout,parent,false);
-        TextView articleTitleView = newView.findViewById(R.id.articleTitle);
+        newView = inflater.inflate(R.layout.starred_row_layout,parent,false);
+        TextView articleTitleView = newView.findViewById(R.id.starredArticleTitle);
         articleTitleView.setText(itemArticle.getTitle());
-        TextView articleDateView = newView.findViewById(R.id.articleDate);
+        TextView articleDateView = newView.findViewById(R.id.starredArticleDate);
         articleDateView.setText(itemArticle.getDate());
-        ImageButton starBtn = newView.findViewById(R.id.starButton);
-        if (itemArticle.isStarred())
-            starBtn.setImageResource(R.drawable.star_full);
-        else {
-            dbHelper = new MyOpener(context);
-            db = dbHelper.getWritableDatabase();
-            String [] columns = {MyOpener.COL_WEB_ID};
-            results = db.query(false,
-                    MyOpener.TABLE_NAME,
-                    columns,
-                    MyOpener.COL_WEB_ID + " like ?",
-                    new String[] {itemArticle.getId()},
-                    null, null, null, null);
-            if (results.getCount() == 0)
-                starBtn.setImageResource(R.drawable.star_empty);
-            else
-                starBtn.setImageResource(R.drawable.star_full);
-        }
-        starBtn.setOnClickListener( new StarButtonOnClickListener(itemArticle, context));
+        ImageButton starBtn = newView.findViewById(R.id.starredStarButton);
+        starBtn.setImageResource(R.drawable.star_full);
+
+        starBtn.setOnClickListener((click) -> {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(parent.getContext());
+            alertDialogBuilder.setTitle("Remove this News from Starred?");
+            alertDialogBuilder.setMessage(itemArticle.getTitle());
+
+            alertDialogBuilder.setPositiveButton("Yes", (click2, arg) -> {
+                dbHelper = new MyOpener(context);
+                db = dbHelper.getWritableDatabase();
+                db.delete(MyOpener.TABLE_NAME, MyOpener.COL_WEB_ID + "= ?", new String[]{itemArticle.getId()});
+                this.getElements().remove(position);
+                this.notifyDataSetChanged();
+            });
+
+            alertDialogBuilder.setNegativeButton("Cancel", (click3, arg) -> {
+                alertDialogBuilder.create().dismiss();
+            });
+            alertDialogBuilder.create().show();
+        });
 
         newView.setOnClickListener((click) -> {
             Intent goToDetails = new Intent(context, NewsDetailsActivity.class);
@@ -87,7 +89,4 @@ public class ArticlesListAdapter extends BaseAdapter {
 
         return newView;
     }
-
 }
-
-

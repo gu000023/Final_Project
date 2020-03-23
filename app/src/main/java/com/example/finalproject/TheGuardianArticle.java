@@ -28,6 +28,15 @@ public class TheGuardianArticle {
         this.starred = starred;
     }
 
+    public TheGuardianArticle(String date, String title, String url, String sectionName, String id) {
+        this.date = date;
+        this.title = title;
+        this.url = url;
+        this.sectionName = sectionName;
+        this.id = id;
+        this.starred = true;
+    }
+
     public String getDate() {
         return date;
     }
