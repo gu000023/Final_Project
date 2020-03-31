@@ -45,6 +45,14 @@ public class MainActivity extends AppCompatActivity {
             startActivity(goToProfile);
 
         });
+
+        //final project
+        Button bt=(Button) findViewById(R.id.button9);
+        bt.setOnClickListener((v)->{
+            Intent goToNasa = new Intent(MainActivity.this, enterlatlon.class);
+            //goToProfile.putExtra("Email", getSharedPreferences(pref,Context.MODE_PRIVATE).getString("Email",""));
+            startActivity(goToNasa);
+        });
     }
 
 

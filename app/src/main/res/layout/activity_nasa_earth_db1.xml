@@ -1,45 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".WeatherForecast">
+    tools:context=".NasaEarthDB1">
+
+    <ListView
+        android:id="@+id/nasalv"
+        android:layout_width="wrap_content"
+        android:layout_height="366dp" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:id="@+id/nasaimg"
+        android:layout_width="130dp"
+        android:layout_height="99dp"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/nasadate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:layout_below="@id/imageView3"/>
+        />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/nasalat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:layout_below="@id/textView7"/>
+     />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/nasalon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:layout_below="@id/textView13"/>
+        />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/nasapb"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView14"
         android:visibility="invisible"/>
 
 
-</RelativeLayout>
+
+</LinearLayout>
