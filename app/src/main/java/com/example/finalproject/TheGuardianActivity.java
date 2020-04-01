@@ -28,7 +28,7 @@ import static android.widget.Toast.LENGTH_LONG;
 
 //Author: Lilia Ramalho Martins
 //Student # 040952491
-public class TheGuardianActivity extends AppCompatActivity implements OnQueryCompleted, NavigationView.OnNavigationItemSelectedListener {
+public class TheGuardianActivity extends AppCompatActivity implements OnTGQueryCompleted, NavigationView.OnNavigationItemSelectedListener {
 
     private ListView listView;
     private ProgressBar progressBar;
@@ -79,7 +79,7 @@ public class TheGuardianActivity extends AppCompatActivity implements OnQueryCom
 
     @Override
     public void onQueryCompleted(List<TheGuardianArticle> articles) {
-        ArticlesListAdapter myArticleListAdapter = new ArticlesListAdapter(this);
+        TGArticlesListAdapter myArticleListAdapter = new TGArticlesListAdapter(this);
         for (TheGuardianArticle element : articles) {
             myArticleListAdapter.getElements().add(element);
         }
@@ -103,7 +103,7 @@ public class TheGuardianActivity extends AppCompatActivity implements OnQueryCom
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.example_menu, menu);
+        inflater.inflate(R.menu.tg_news_menu, menu);
 
         return true;
     }

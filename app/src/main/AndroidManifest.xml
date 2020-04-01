@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".StarredActivity"></activity>
-        <activity android:name=".NewsDetailsActivity" />
+        <activity android:name=".TGNewsEmptyFrameActivity"></activity>
+        <activity android:name=".StarredActivity" />
+        <activity android:name=".TGNewsDetailsFragment" />
         <activity android:name=".TheGuardianActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
