@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:textStyle="bold"
-            android:text="The Guardian news article search"
+            android:text="@string/tg_navbar_header1"
             android:textSize="12dp" />
 
         <TextView
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:textStyle="bold"
-            android:text="Author: Lilia Ramalho Martins"
+            android:text="@string/tg_navbar_header2"
             android:textSize="12dp" />
 
         <TextView
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:textStyle="bold"
-            android:text="Version: 1.0"
+            android:text="@string/tg_navbar_header3"
             android:textSize="12dp" />
     </LinearLayout>
 

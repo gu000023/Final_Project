@@ -65,10 +65,10 @@ public class StarredListAdapter extends BaseAdapter {
 
         starBtn.setOnClickListener((click) -> {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(parent.getContext());
-            alertDialogBuilder.setTitle("Remove this News from Starred?");
+            alertDialogBuilder.setTitle(R.string.tg_remov_dialog_title);
             alertDialogBuilder.setMessage(itemArticle.getTitle());
 
-            alertDialogBuilder.setPositiveButton("Yes", (click2, arg) -> {
+            alertDialogBuilder.setPositiveButton(R.string.tg_remov_dialog_yes, (click2, arg) -> {
                 dbHelper = new TGNewsOpener(context);
                 db = dbHelper.getWritableDatabase();
                 db.delete(TGNewsOpener.TABLE_NAME, TGNewsOpener.COL_WEB_ID + "= ?", new String[]{itemArticle.getId()});
@@ -76,7 +76,7 @@ public class StarredListAdapter extends BaseAdapter {
                 this.notifyDataSetChanged();
             });
 
-            alertDialogBuilder.setNegativeButton("Cancel", (click3, arg) -> {
+            alertDialogBuilder.setNegativeButton(R.string.tg_remov_dialog_cancel, (click3, arg) -> {
                 alertDialogBuilder.create().dismiss();
             });
             alertDialogBuilder.create().show();

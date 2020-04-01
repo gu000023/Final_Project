@@ -8,7 +8,13 @@ import android.view.View;
 import android.widget.ImageButton;
 import com.google.android.material.snackbar.Snackbar;
 
-
+/**
+ * Listener for the Star Button near a News showed in the ListView whose adapter is
+ * TGArticlesListAdapter.java
+ * @implements View.OnClickListener
+ * @author Lilia Ramalho Martins
+ * @version 1.0
+ */
 public class StarButtonOnClickListener implements View.OnClickListener {
 
     private TheGuardianArticle article;
@@ -18,12 +24,21 @@ public class StarButtonOnClickListener implements View.OnClickListener {
     private Cursor results;
     private ContentValues newRowValues;
 
+    /**
+     * Constructor with two parameters.
+     * @param article The TheGuardianArticle object related to the star button.
+     * @param context The context of the TheGuardianActivity where the star button is shown.
+     */
     public StarButtonOnClickListener(TheGuardianArticle article, Context context) {
         super();
         this.article = article;
         this.context = context;
     }
 
+    /**
+     * Implementation of onClick method in the interface View.OnClickListener
+     * @param v The listened button.
+     */
     @Override
     public void onClick(View v) {
         ImageButton starBtn = (ImageButton)v;
@@ -35,6 +50,11 @@ public class StarButtonOnClickListener implements View.OnClickListener {
         }
     }
 
+    /**
+     * Method called when an empty star is pressed. It inserts the related News in database
+     * and also shows a Snackbar to ask if user want to undo action.
+     * @param starBtn The listened button.
+     */
     public void setStarred(ImageButton starBtn) {
         starBtn.setImageResource(R.drawable.star_full);
         article.setStarred(true);
@@ -58,20 +78,25 @@ public class StarButtonOnClickListener implements View.OnClickListener {
             db.insert(TGNewsOpener.TABLE_NAME, null, newRowValues);
         }
 
-        Snackbar snackbar = Snackbar.make(starBtn, "News starred", 2000);
-        snackbar.setAction("UNDO", click -> unStar(starBtn));
+        Snackbar snackbar = Snackbar.make(starBtn, R.string.tg_snack_starred, 2000);
+        snackbar.setAction(R.string.tg_snack_undo_btn, click -> unStar(starBtn));
         snackbar.show();
 
     }
 
+    /**
+     * Method called when an full star is pressed. It removes the related News from database
+     * and also shows a Snackbar to ask if user want to undo action.
+     * @param starBtn The listened button.
+     */
     public void unStar(ImageButton starBtn) {
         starBtn.setImageResource(R.drawable.star_empty);
         article.setStarred(false);
 
         db.delete(TGNewsOpener.TABLE_NAME, TGNewsOpener.COL_WEB_ID + "= ?", new String[] {article.getId()});
 
-        Snackbar snackbar = Snackbar.make(starBtn, "News unstarred", 2000);
-        snackbar.setAction("UNDO", click -> setStarred(starBtn));
+        Snackbar snackbar = Snackbar.make(starBtn, R.string.tg_snack_star_remov, 2000);
+        snackbar.setAction(R.string.tg_snack_undo_btn, click -> setStarred(starBtn));
         snackbar.show();
 
     }
