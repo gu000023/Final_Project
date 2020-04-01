@@ -8,7 +8,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -48,6 +50,10 @@ public class TheGuardianActivity extends AppCompatActivity implements OnTGQueryC
         progressBar.setVisibility(View.INVISIBLE);
         listView = (ListView)findViewById(R.id.list_results);
 
+        SharedPreferences lastTerm = getSharedPreferences("lastTerm.xml", Context.MODE_PRIVATE);
+        String sharedEmail = lastTerm.getString("lastTerm", "");
+        editText.setText(sharedEmail);
+
         myToolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
 
@@ -76,6 +82,17 @@ public class TheGuardianActivity extends AppCompatActivity implements OnTGQueryC
             }
         });
 
+    }
+
+    @Override
+    protected void onPause() {
+        SharedPreferences lastTerm = getSharedPreferences("lastTerm.xml", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = lastTerm.edit();
+        editText = (EditText)findViewById(R.id.editText_term);
+        edit.putString("lastTerm", String.valueOf(editText.getText()));
+        edit.commit();
+
+        super.onPause();
     }
 
     @Override

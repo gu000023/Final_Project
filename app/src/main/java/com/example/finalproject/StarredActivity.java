@@ -7,6 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ListView;
 
+/**
+ * Activity that show the list of saved news.
+ * @author Lilia Ramalho Martins
+ * @version 1.0
+ */
 public class StarredActivity extends AppCompatActivity {
 
     private ListView listView;
@@ -14,6 +19,11 @@ public class StarredActivity extends AppCompatActivity {
     private SQLiteDatabase db;
     private Cursor results;
 
+    /**
+     * Override the method onCreate in the super class AppCompatActivity. It creates a
+     * StarredListAdapter to load the ListView with the saved News in database.
+     * @param savedInstanceState not used Bundle.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
