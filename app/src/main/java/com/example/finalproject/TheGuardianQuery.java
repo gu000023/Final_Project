@@ -24,10 +24,10 @@ class TheGuardianQuery extends AsyncTask<String, Integer, List<TheGuardianArticl
     private HttpURLConnection urlConnection;
     private InputStream response;
     private ProgressBar progressBar;
-    private OnQueryCompleted listener;
+    private OnTGQueryCompleted listener;
 
 
-    public TheGuardianQuery (ProgressBar progressBar, OnQueryCompleted listener) {
+    public TheGuardianQuery (ProgressBar progressBar, OnTGQueryCompleted listener) {
         super();
         this.progressBar = progressBar;
         this.listener = listener;

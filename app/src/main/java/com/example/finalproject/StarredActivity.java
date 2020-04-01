@@ -5,39 +5,36 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
-
-import java.text.ParseException;
 
 public class StarredActivity extends AppCompatActivity {
 
     private ListView listView;
-    private MyOpener dbHelper;
+    private TGNewsOpener dbHelper;
     private SQLiteDatabase db;
     private Cursor results;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_starred);
+        setContentView(R.layout.tg_activity_starred);
 
         listView = (ListView)findViewById(R.id.list_starred);
         StarredListAdapter myStarredListAdapter = new StarredListAdapter(this);
-        dbHelper = new MyOpener(this);
+        dbHelper = new TGNewsOpener(this);
         db = dbHelper.getWritableDatabase();
-        String [] columns = {MyOpener.COL_ID,
-                MyOpener.COL_DATE,
-                MyOpener.COL_TITLE,
-                MyOpener.COL_URL,
-                MyOpener.COL_SECTION,
-                MyOpener.COL_WEB_ID};
-        results = db.query(false, MyOpener.TABLE_NAME, columns, null, null, null, null, null, null);
-        int dateColIndex = results.getColumnIndex(MyOpener.COL_DATE);
-        int titleColIndex = results.getColumnIndex(MyOpener.COL_TITLE);
-        int urlColIndex = results.getColumnIndex(MyOpener.COL_URL);
-        int sectionColIndex = results.getColumnIndex(MyOpener.COL_SECTION);
-        int webIdColIndex = results.getColumnIndex(MyOpener.COL_WEB_ID);
+        String [] columns = {TGNewsOpener.COL_ID,
+                TGNewsOpener.COL_DATE,
+                TGNewsOpener.COL_TITLE,
+                TGNewsOpener.COL_URL,
+                TGNewsOpener.COL_SECTION,
+                TGNewsOpener.COL_WEB_ID};
+        results = db.query(false, TGNewsOpener.TABLE_NAME, columns, null, null, null, null, null, null);
+        int dateColIndex = results.getColumnIndex(TGNewsOpener.COL_DATE);
+        int titleColIndex = results.getColumnIndex(TGNewsOpener.COL_TITLE);
+        int urlColIndex = results.getColumnIndex(TGNewsOpener.COL_URL);
+        int sectionColIndex = results.getColumnIndex(TGNewsOpener.COL_SECTION);
+        int webIdColIndex = results.getColumnIndex(TGNewsOpener.COL_WEB_ID);
 
         if (results.getCount() > 0) {
             results.moveToFirst();
