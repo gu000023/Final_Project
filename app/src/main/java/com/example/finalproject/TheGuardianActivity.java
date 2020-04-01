@@ -2,6 +2,7 @@ package com.example.finalproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -62,11 +63,11 @@ public class TheGuardianActivity extends AppCompatActivity implements OnTGQueryC
         button.setOnClickListener((click) -> {
            String term = String.valueOf(editText.getText());
             if (term == null || term.isEmpty())
-                Toast.makeText(TheGuardianActivity.this, "Please, enter search term", LENGTH_LONG).show();
+                Toast.makeText(TheGuardianActivity.this, getString(R.string.tg_toast_no_term), LENGTH_LONG).show();
             else {
                 String[] words = term.split("\\s+");
                 if (words.length > 1)
-                    Toast.makeText(TheGuardianActivity.this, "Please, enter only one term", LENGTH_LONG).show();
+                    Toast.makeText(TheGuardianActivity.this, getString(R.string.tg_toast_many_terms), LENGTH_LONG).show();
                 else {
                     term.trim();
                     TheGuardianQuery req = new TheGuardianQuery(progressBar, this);
@@ -117,7 +118,18 @@ public class TheGuardianActivity extends AppCompatActivity implements OnTGQueryC
                 startActivity(gotToStarred);
                 break;
             case R.id.item12:
-                Toast.makeText(this, "message", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "message", Toast.LENGTH_LONG).show();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setTitle(getString(R.string.tg_help_dialog_title));
+                alertDialogBuilder.setMessage(getString(R.string.tg_help_dialog_line1) + "\n" +
+                        getString(R.string.tg_help_dialog_line2) + "\n" +
+                        getString(R.string.tg_help_dialog_line3) + "\n" +
+                        getString(R.string.tg_help_dialog_line4));
+
+                alertDialogBuilder.setPositiveButton(R.string.tg_help_dialog_dismiss, (click, arg) -> {
+                    alertDialogBuilder.create().dismiss();
+                });
+                alertDialogBuilder.create().show();
                 break;
         }
 

@@ -38,7 +38,7 @@ public class TGNewsDetailsFragment extends Fragment {
 
         fromTheGuardianActivity = getArguments();
         String section = fromTheGuardianActivity.getString("SECTION");
-        section = "Section: " + section;
+        section = getString(R.string.tg_frag_section) + ": " + section;
         String date = fromTheGuardianActivity.getString("DATE");
         String title = fromTheGuardianActivity.getString("TITLE");
         String url = fromTheGuardianActivity.getString("URL");

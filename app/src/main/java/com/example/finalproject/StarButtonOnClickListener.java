@@ -58,8 +58,8 @@ public class StarButtonOnClickListener implements View.OnClickListener {
             db.insert(TGNewsOpener.TABLE_NAME, null, newRowValues);
         }
 
-        Snackbar snackbar = Snackbar.make(starBtn, "News starred", 2000);
-        snackbar.setAction("UNDO", click -> unStar(starBtn));
+        Snackbar snackbar = Snackbar.make(starBtn, R.string.tg_snack_starred, 2000);
+        snackbar.setAction(R.string.tg_snack_undo_btn, click -> unStar(starBtn));
         snackbar.show();
 
     }
@@ -70,8 +70,8 @@ public class StarButtonOnClickListener implements View.OnClickListener {
 
         db.delete(TGNewsOpener.TABLE_NAME, TGNewsOpener.COL_WEB_ID + "= ?", new String[] {article.getId()});
 
-        Snackbar snackbar = Snackbar.make(starBtn, "News unstarred", 2000);
-        snackbar.setAction("UNDO", click -> setStarred(starBtn));
+        Snackbar snackbar = Snackbar.make(starBtn, R.string.tg_snack_star_remov, 2000);
+        snackbar.setAction(R.string.tg_snack_undo_btn, click -> setStarred(starBtn));
         snackbar.show();
 
     }

@@ -4,7 +4,7 @@
 
     <group android:checkableBehavior="single">
         <item android:id="@+id/item11"
-            android:title="Starred News"
+            android:title="@string/tg_navbar_item1"
             android:icon="@drawable/star_full"
             android:orderInCategory="100"
             app:showAsAction="withText"/>
@@ -12,7 +12,7 @@
     <group>
         <item android:id="@+id/item12"
             android:icon="@drawable/question"
-            android:title="Help"
+            android:title="@string/tg_navbar_item2"
             android:orderInCategory="200"
             app:showAsAction="withText"/>
     </group>
