@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -60,6 +61,9 @@ public class NasaEarthDB extends AppCompatActivity {
     Bitmap bm;
     Button bt_searchImage;
 
+    String reqUrl;
+    String reqUrl2;
+
     static SQLiteDatabase db;
 
     /**
@@ -84,9 +88,9 @@ public class NasaEarthDB extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nasa_earth_db1);
+        setContentView(R.layout.activity_nasa_earth_db);
 
-        //try this
+        //
         new AlertDialog.Builder(NasaEarthDB.this)
                 .setTitle("System Alert")
                 .setMessage("Entering NASA DB IMAGE SEARCH, CLICK YES TO PROCEED, NO TO EXIT")
@@ -113,16 +117,16 @@ public class NasaEarthDB extends AppCompatActivity {
         date = (TextView) findViewById(R.id.imageDate);
         imageView = (ImageView) findViewById(R.id.nasaImage);
 
-        bt_searchImage = (Button)findViewById(R.id.earthImage);
+        bt_searchImage = EnterGeoInfo.search;
         /**
          * listens for Nasa Earth Image button being clicked
          */
         bt_searchImage.setOnClickListener(click-> {
             Toast.makeText(this, "Fetching data...", Toast.LENGTH_SHORT).show();
             latInput = (EditText) findViewById(R.id.latEdit);
-            latVal = latInput.getText().toString();
+            latVal = EnterGeoInfo.latString;
             lonInput = (EditText) findViewById(R.id.longEdit);
-            lonVal = lonInput.getText().toString();
+            lonVal = EnterGeoInfo.lonString;
 
             /**
              * initiate and execute the AsyncTask class
@@ -132,8 +136,10 @@ public class NasaEarthDB extends AppCompatActivity {
              * populate the jason url with changed longitude and latitude
              */
             //String reqUrl = "https://api.nasa.gov/planetary/earth/imagery/?lon="+lonVal+"&lat="+latVal+"&date=2014-02-01&api_key=DEMO_KEY#";
-            String reqUrl="http://dev.virtualearth.net/REST/V1/Imagery/Map/Birdseye/"+latVal+","+lonVal+"/20?dir=180&ms=200,200&key=Ahmc-zu9S2AqY2k7mJUYLXJjvEykB6U-XTb67vfsv1Wjx4dbdg0ERGAYcWLNnWAh";
-            req.execute(reqUrl);
+            //String reqUrl="http://dev.virtualearth.net/REST/V1/Imagery/Map/Birdseye/"+latVal+","+lonVal+"/20?dir=180&ms=200,200&key=Ahmc-zu9S2AqY2k7mJUYLXJjvEykB6U-XTb67vfsv1Wjx4dbdg0ERGAYcWLNnWAh";
+            reqUrl="https://dev.virtualearth.net/REST/V1/Imagery/Metadata/Aerial/";
+            reqUrl2="?zl=15&o=&key=AnaMEev6ennz3vJWE5kEtBd4v0gd9Dhd3XaI4bB86NCYO3WDTTO4SCoi4vEbcj06";
+            req.execute(latVal,lonVal);
         });
 
 
@@ -172,15 +178,15 @@ public class NasaEarthDB extends AppCompatActivity {
     }
 
     //9.	Each activity must use an AsyncTask to retrieve data from an http server.
-    public class NasaImageQuery extends AsyncTask<String, Integer, String> {
+    public class NasaImageQuery extends AsyncTask<String, Integer, Bitmap> {
 
         @Override
-        protected String doInBackground(String... args) {
+        protected Bitmap doInBackground(String... args) {
             try {
                 /**
                  * create a nasa Image Jason URL object of what server to contact:
                  */
-                URL urlJason = new URL(args[0]);
+                URL urlJason = new URL(reqUrl+latVal+","+lonVal+reqUrl2);
                 HttpURLConnection jasonConnection = (HttpURLConnection) urlJason.openConnection();
                 InputStream jasonResponse = jasonConnection.getInputStream();
                 publishProgress(0);
@@ -202,53 +208,60 @@ public class NasaEarthDB extends AppCompatActivity {
                  * Convert string to Jason
                  */
                 JSONObject jObject = new JSONObject(result);
+                JSONArray resourceSets = jObject.getJSONArray("resourceSets");
+                JSONObject firstResourceSet = resourceSets.getJSONObject(0);
+                JSONArray resources = firstResourceSet.getJSONArray("resources");
+                JSONObject firstResource = resources.getJSONObject(0);
                 publishProgress(60);
                 /**
                  * Get date from .jason
                  */
-                dateStr = jObject.getString("date");
+                dateStr = firstResource.getString("vintageEnd");
 
                 /**
                  * get the string associate with the value
                  */
-                imageStr = jObject.getString("url");
-                String[] arrOfstr = imageStr.split("=");
-                imageName = arrOfstr[1].split("&")[0];
-                imageFile = imageName + ".png";
 
+                //imageStr = jObject.getString("imageUrl");
+                //String[] arrOfstr = imageStr.split("=");
+                //imageName = arrOfstr[1].split("&")[0];
+                //imageFile = imageName + ".jpeg";
+                URL imageUrl=new URL(firstResource.getString("imageUrl"));
                 publishProgress(80);
 
-                if (fileExistance(imageFile)) {
-                    FileInputStream fis = null;
-                    try {
-                        fis = openFileInput(imageFile);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    bm = BitmapFactory.decodeStream(fis);
+                //if (fileExistance(imageFile)) {
+                //    FileInputStream fis = null;
+                //    try {
+                //        fis = openFileInput(imageFile);
+                 //   } catch (FileNotFoundException e) {
+                //        e.printStackTrace();
+                //    }
+                //    bm = BitmapFactory.decodeStream(fis);
 
-                    publishProgress(100);
-                    Log.i(imageFile, "Image already exists locally");
-                } else {
-                    URL urlImage = new URL(imageStr);
-                    HttpURLConnection connection = (HttpURLConnection) urlImage.openConnection();
+                //    publishProgress(100);
+                //    Log.i(imageFile, "Image already exists locally");
+                //} else {
+                //publishProgress(100);
+                    //URL urlImage = new URL(imageStr);
+                    HttpURLConnection connection = (HttpURLConnection) imageUrl.openConnection();
                     connection.connect();
 
                     int responseCode = connection.getResponseCode();
                     if (responseCode == 200) {
-                        imageNasa = BitmapFactory.decodeStream(connection.getInputStream());
-                        bm=imageNasa;
+                        bm = BitmapFactory.decodeStream(connection.getInputStream());
+                        //bm=imageNasa;
                         // image fully downloaded
-                        publishProgress(100);
+                        //publishProgress(100);
                         // save image to local drive
-                        FileOutputStream outputStream = openFileOutput(imageFile, Context.MODE_PRIVATE);
-                        imageNasa.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
-                        outputStream.flush();
-                        outputStream.close();
+                        //FileOutputStream outputStream = openFileOutput(imageFile, Context.MODE_PRIVATE);
+                        //imageNasa.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
+                        //outputStream.flush();
+                        //outputStream.close();
                     }
-
-                }
-                publishProgress(90);
+                publishProgress(100);
+                    return bm;
+               // }
+                //publishProgress(90);
             } catch (Exception e) {
                 Log.e("Error", e.getMessage());
 
@@ -256,9 +269,10 @@ public class NasaEarthDB extends AppCompatActivity {
 
                 Snackbar.make(bt_searchImage, "Image not recorded",
                         Snackbar.LENGTH_LONG).show();
+                return null;
             }
-            publishProgress(100);
-            return "Done";
+
+            //return bm;
         }
 
         public boolean fileExistance(String fname) {
@@ -272,16 +286,16 @@ public class NasaEarthDB extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
         }
 
-        @Override
-        public void onPostExecute(String fromDoInBackground) {
-            Log.i("HTTP", fromDoInBackground);
+        public void onPostExecute(Bitmap bm) {
+            //Log.i("HTTP", fromDoInBackground);
 
             //imageView.setVisibility(bm);
             latitude.setText(getResources().getString(R.string.latitudeText) + " " + latVal);
             longitude.setText(getResources().getString(R.string.lonText) + " " + lonVal);
             date.setText(getResources().getString(R.string.date) + " " + dateStr);
-
-            imageView.setImageBitmap(bm);
+            if(bm!=null) {
+                imageView.setImageBitmap(bm);
+            }
 
             progressBar.setVisibility(View.INVISIBLE);
         }

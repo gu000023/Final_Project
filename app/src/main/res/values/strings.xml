@@ -46,12 +46,12 @@
     <string name="close">close</string>
 
     <string name="app_namee">FinalProject</string>
-    <string name="gotoImage">Earth Image</string>
-    <string name="earthSearch">Image Search</string>
+    <string name="gotoImage">Get Image Data</string>
+    <string name="earthSearch">Enter Longitude and Latitude</string>
     <string name="latitudeText">Latitude:</string>
-    <string name="latitudeEdit">Lat range: -90-90</string>
+    <string name="latitudeEdit">Lat range: -90->90</string>
     <string name="lonText">Longitude:</string>
-    <string name="lonEdit">Lon range: -180-180</string>
+    <string name="lonEdit">Lon range: -180->180</string>
     <string name="date">Date: </string>
     <string name="favImage">My List</string>
     <string name="saveImage">Save to My List</string>

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".NasaEarthDB">
 
-    <TextView
+    <!--TextView
         android:id="@+id/searchTitle"
         android:textSize="20dp"
         android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
         android:id="@+id/earthImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/gotoImage" />
+        android:text="@string/gotoImage" /-->
 
     <ImageView
         android:id="@+id/nasaImage"
@@ -67,15 +67,9 @@
         android:layout_marginRight="5dp"
         android:text="@string/date" />
 
-    <ProgressBar
-        android:id="@+id/loadingProgress"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        style="?android:attr/progressBarStyleHorizontal" />
 
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -90,15 +84,26 @@
             android:id="@+id/favoriteImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/save"
             android:text="@string/favImage" />
 
         <Button
             android:id="@+id/help"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/favoriteImage"
             android:text="@string/help" />
 
-    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/loadingProgress"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@id/help"
+            style="?android:attr/progressBarStyleHorizontal" />
+
+    </RelativeLayout>
 
 
 
