@@ -15,10 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ImageList"/>
+        <activity android:name=".ListViewForImage"/>
         <activity android:name=".MyOpener"/>
-        <activity android:name=".NasaEarthDB"/>
+        <activity android:name=".NasaDB"/>
         <activity android:name=".NasaImage"/>
+        <activity android:name=".EnterGeoInfo"/>
         <activity android:name=".MainActivityfp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

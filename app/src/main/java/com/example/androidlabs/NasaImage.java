@@ -55,7 +55,7 @@ public class NasaImage extends AppCompatActivity {
 
         favorites = (Button)findViewById(R.id.favoriteImage);
         favorites.setOnClickListener(click-> {
-            Intent gotoImageList = new Intent(NasaImage.this, ImageList.class );
+            Intent gotoImageList = new Intent(NasaImage.this, ListViewForImage.class );
             startActivity(gotoImageList);
 
         });

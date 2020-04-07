@@ -16,7 +16,7 @@ public class MainActivityfp extends AppCompatActivity{
 
         Button bt_NasaEarth = (Button)findViewById(R.id.nasaEarthBtn);
         bt_NasaEarth.setOnClickListener(click-> {
-            Intent gotoNasaEarth = new Intent(MainActivityfp.this, NasaEarthDB.class );
+            Intent gotoNasaEarth = new Intent(MainActivityfp.this, EnterGeoInfo.class );
             startActivity(gotoNasaEarth);
 
         });

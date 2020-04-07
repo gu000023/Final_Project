@@ -1,5 +1,6 @@
 package com.example.androidlabs;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ public class EnterGeoInfo extends AppCompatActivity {
     public static String lonString;
     public static String latString;
     public static Button search;
+    public static String dateString="";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,11 +23,14 @@ public class EnterGeoInfo extends AppCompatActivity {
         lat=(EditText) findViewById(R.id.latEdit);
         search=(Button) findViewById(R.id.earthImage);
 
-        lonString=lon.getText().toString();
-        latString=lat.getText().toString();
+
 
         search.setOnClickListener(click->{
-            
+            lonString=lon.getText().toString();
+            latString=lat.getText().toString();
+            dateString=dateString;
+            Intent goTodb = new Intent(EnterGeoInfo.this, NasaDB.class);
+            startActivity(goTodb);
         });
     }
 }
