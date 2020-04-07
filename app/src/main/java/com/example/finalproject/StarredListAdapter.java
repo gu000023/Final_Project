@@ -18,6 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The adapter for the Listview showed in the StarredActivity.
+ * @author Lilia Ramalho Martins
+ * @version 1.0
+ */
 public class StarredListAdapter extends BaseAdapter {
 
     private Context context;
@@ -26,30 +31,61 @@ public class StarredListAdapter extends BaseAdapter {
     private List<TheGuardianArticle> elements = new ArrayList<>();
     private boolean isTablet;
 
+    /**
+     * Constructor with one parameters.
+     * @param context The context of the StarredActivity where the ListView is shown.
+     */
     public StarredListAdapter(Context context) {
         super();
         this.context = context;
     }
 
+    /**
+     * Get method for the List of TheGuardianArticle objects that are shown in the ListView.
+     * @return List<TheGuardianArticle>.
+     */
     public List<TheGuardianArticle> getElements() {
         return elements;
     }
 
+    /**
+     * Overrides method getCount from BaseAdapter
+     * @return int The size of the list of TheGuardianArticle objects shown in the ListView.
+     */
     @Override
     public int getCount() {
         return getElements().size();
     }
 
+    /**
+     * Overrides method getItem from BaseAdapter
+     * @param position int with the position of the TheGuardianArticle object to be returned.
+     * @return Object TheGuardianArticle object in the position passed as parameter.
+     */
     @Override
     public Object getItem(int position) {
         return getElements().get(position);
     }
 
+    /**
+     * Overrides method getItemId from BaseAdapter. Since we not using a numeric id. We are
+     * rather using the id String from the json. This method is not used. It only returns the
+     * position from parameter.
+     * @param position int.
+     * @return long.
+     */
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    /**
+     * Overrides method getView from BaseAdapter. It inflates the layouts for each row in the
+     * ListView. It also adds listener and implement using lambda functions the events when a
+     * News title is clicked (and a fragment with the News details is called) and when the
+     * full star is clicked (and a dialog asks with the user wants to remove the News from
+     * the starred list).
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
