@@ -19,7 +19,9 @@ public class NasaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         parentActivity=getArguments();
-        String s=parentActivity.getString(ListViewForImage.IT)
+
+        View view=inflater.inflate(R.layout.)
+        String date=parentActivity.getString("date");
         System.out.print(2);
         return null;
     }
