@@ -20,6 +20,8 @@
         <activity android:name=".NasaDB"/>
         <activity android:name=".NasaImage"/>
         <activity android:name=".EnterGeoInfo"/>
+        <activity android:name=".EmptyActivity"/>
+        <activity android:name=".NasaFragment"/>
         <activity android:name=".MainActivityfp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

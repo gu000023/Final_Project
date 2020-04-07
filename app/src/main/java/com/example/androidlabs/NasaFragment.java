@@ -19,6 +19,7 @@ public class NasaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         parentActivity=getArguments();
+        String s=parentActivity.getString(ListViewForImage.IT)
         System.out.print(2);
         return null;
     }
