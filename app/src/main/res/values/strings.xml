@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--activity_main-->
+    <string name="app_name">FinalProject</string>
+    <string name="hello_message">Main Menu</string>string>
+    <string name="button1">The Guardian news article search</string>
+    <string name="button2">NASA image of the day search</string>
+    <string name="button3">NASA earth imagery database</string>
+    <string name="button4">BBC News reader</string>
+
+    <!--nasaimage_of_day_search-->
+    <string name="textView1">Please pick a date</string>
+    <string name="buttonSeaerch">Search</string>
+
+    <!--nasaimage_info-->
+    <string name="textView2">Information about NASA Image Of Day, click hdurl to view the image</string>
+    <string name="buttonGoBack">Go Back</string>
+    <string name="saveImage">Save Image to List</string>
+    <string name="buttonList">Go To ImageList</string>
+    <string name="buttonHelp">HELP</string>
+    <string name="helpTitle">Help</string>
+    <string name="description">This application allows user to pick a date to retrieve an image from NASA web servers. Click the text field to choose a date, then press the search button retrieve and image.</string>
+    <string name="ok">OK</string>
+
+    <!--nasaimage_list-->
+    <string name="textView3">Image List</string>
+
+    <string name="hideButton">HIDE</string>
+
+    <string name="snackbar1">You are viewing NASA_IMAGE_OF_DAY list, click one to view the image</string>
+    <string name="titleMessage">Do you want to delete this?</string>
+    <string name="deleteMessage">Confirm deletion?</string>
+    <string name="yes">YES</string>
+    <string name="no">CANCEL</string>
+
+</resources>
