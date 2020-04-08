@@ -18,7 +18,6 @@
         <activity android:name=".ListViewForImage"/>
         <activity android:name=".MyOpener"/>
         <activity android:name=".NasaDB"/>
-        <activity android:name=".NasaImage"/>
         <activity android:name=".EnterGeoInfo"/>
         <activity android:name=".EmptyActivity"/>
         <activity android:name=".NasaFragment"/>

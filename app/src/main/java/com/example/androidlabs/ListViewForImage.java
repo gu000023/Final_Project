@@ -17,7 +17,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
-
+/*
+Author: Kaiwen Gu
+Version: 1.1
+ */
 public class ListViewForImage extends AppCompatActivity {
     ArrayList<NasaDB.NasaImage> images = new ArrayList<>();
     private android.widget.ListView myList;
@@ -31,7 +34,10 @@ public class ListViewForImage extends AppCompatActivity {
     String img;
     long jsonid;
     //
-
+    /*
+    This method is used to handle response in the listview, including deletion and redirection to a new activity to display wanted
+    data.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +61,6 @@ public class ListViewForImage extends AppCompatActivity {
                     deleteImage(images.get(position));
                     images.remove(position);
                     myAdapter.notifyDataSetChanged();
-                 //   if (getSupportFragmentManager().findFragmentById(R.id.fragmentLocation)!= null) {
-                 //       getSupportFragmentManager().beginTransaction().remove(dFragment).commit();
-                 //   }
                 }).setNegativeButton("NO", (dialog, which) -> {});
                 AlertDialog alert = alertDialogBuilder.create();
                 alert.show();
@@ -73,7 +76,7 @@ public class ListViewForImage extends AppCompatActivity {
         passData.putString("lat",images.get(pos).latitude);
         passData.putString("lon",images.get(pos).longitude);
         passData.putString("date",images.get(pos).date);
-
+        passData.putString("url",images.get(pos).imageUrl);
         //EnterGeoInfo.latString=images.get(pos).latitude;
         //EnterGeoInfo.lonString=images.get(pos).longitude;
         //NasaDB.dateStr=passData.getString("date");
@@ -83,11 +86,17 @@ public class ListViewForImage extends AppCompatActivity {
         startActivity(intent);
         });
     }
-
+    /*
+    This method will create delete query to delete listview from database
+     */
     private void deleteImage(NasaDB.NasaImage m){
         db.delete(MyOpener.TABLE_NAME, MyOpener.COL_ID + " = ?", new String[]{Long.toString(m.id)});
     }
 
+    /*
+    This method will load all saved listview data from database everytime the use enter the listview page. It uses cursor's moveToNext()
+    to ensure the full loading of database data.
+     */
     private void loadDataFromDatabase(){
         String[] columns={MyOpener.COL_ID,MyOpener.COL_LONGITUDE,MyOpener.COL_LATITUDE,MyOpener.COL_DATE,MyOpener.COL_IMGNAME};
         Cursor cursor=db.query(false,MyOpener.TABLE_NAME,columns,null,null,null,null,null,null);
@@ -106,13 +115,12 @@ public class ListViewForImage extends AppCompatActivity {
             jsonid=cursor.getLong(idI);
             images.add(new NasaDB.NasaImage(jsonid,latit,longit,dat,img));
         }
-        //for(int i = 0; i< 20; i++ ) {
-            //NasaDB.NasaImage image = new NasaDB.NasaImage(id, NasaDB.lonVal, NasaDB.latVal, NasaDB.dateStr, "url");
-            //images.add(image);
-            //id++;
-        //}
     }
 
+    /*
+    This is an inner class. Its purpose is to retrieve an item and its associated info such as database id. In getView(), the
+    desired text will be set to display on each listview row.
+     */
     class ListAdapter extends BaseAdapter {
         ArrayList<NasaDB.NasaImage> elements = new ArrayList<>();
 

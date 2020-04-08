@@ -6,9 +6,16 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
+/*
+Author: Kaiwen Gu
+Version:1.0
+ */
 public class MainActivityfp extends AppCompatActivity{
 
+    /*
+    The main point of entry for the final project. Four buttons will be used to enter four respective programs. In this case,
+    the button corresponding to the Nasa database image search program is obtained and used.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

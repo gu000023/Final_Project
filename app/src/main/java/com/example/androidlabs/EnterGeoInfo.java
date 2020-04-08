@@ -6,7 +6,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+/*
+Author: Kaiwen Gu
+Version:1.1
+ */
 public class EnterGeoInfo extends AppCompatActivity {
     public static EditText lon;
     public static EditText lat;
@@ -14,7 +17,10 @@ public class EnterGeoInfo extends AppCompatActivity {
     public static String latString;
     public static Button search;
     public static String dateString="";
-
+/*
+Obtain the edittext which will accept user input and the button to click to save. A onclicklistener will listen to user click and gather
+String info and pass them to new activity
+ */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_geo_info);

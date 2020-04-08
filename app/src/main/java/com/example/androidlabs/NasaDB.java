@@ -31,6 +31,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/*
+Author: Kaiwen Gu
+Version: 1.2
+ */
 public class NasaDB extends AppCompatActivity {
     /**
      * primitive type variables
@@ -39,7 +43,7 @@ public class NasaDB extends AppCompatActivity {
     public static String dateStr;
     public static String latVal;
     public static String lonVal;
-
+    public static String imageurl;
     /**
      * object layout TextView, EditText, Button, ProgressBar,
      */
@@ -48,7 +52,7 @@ public class NasaDB extends AppCompatActivity {
     TextView date;
     ImageView imageView;
     ProgressBar progressBar;
-    Bitmap bm;
+    static Bitmap bm1;
     Button bt_searchImage;
 
     String reqUrl;
@@ -56,8 +60,9 @@ public class NasaDB extends AppCompatActivity {
 
     static SQLiteDatabase db;
 
+
     /**
-     *  NasaImage
+     *  Innner class used to initialize an image object containing its geographical info, date and url to the image.
      */
     public static class NasaImage{
         long id;
@@ -75,6 +80,10 @@ public class NasaDB extends AppCompatActivity {
         }
     }
 
+    /*
+    This method will obtain user input for latitude and longitude. It will also create listener to listen for use click on the three
+    buttons, "save", "go to listview" and "help".
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +101,7 @@ public class NasaDB extends AppCompatActivity {
                         finish();
                     }
                 })
-                //.setIcon(android.R.drawable.ic_dialog_alert)
+
                 .show();
         //
 
@@ -100,20 +109,16 @@ public class NasaDB extends AppCompatActivity {
         db = dbOpener.getWritableDatabase();
 
         /**
-         * manipulate input from EditText latitude and longitude values into TextView
+         * Obtain the desired view for later use to set data into their respective views.
          */
         latitude = (TextView) findViewById(R.id.latitude);
         longitude = (TextView) findViewById(R.id.longitude);
         date = (TextView) findViewById(R.id.imageDate);
         imageView = (ImageView) findViewById(R.id.nasaImage);
 
-        //bt_searchImage = EnterGeoInfo.search;
-        /**
-         * listens for Nasa Earth Image button being clicked
-         */
-        //bt_searchImage.setOnClickListener(click-> {
+
             Toast.makeText(this, "Fetching data...", Toast.LENGTH_SHORT).show();
-            //latInput = (EditText) findViewById(R.id.latEdit);
+
         if(EnterGeoInfo.latString!=null&&EnterGeoInfo.latString!="") {
             latVal = EnterGeoInfo.latString;
         }
@@ -122,11 +127,11 @@ public class NasaDB extends AppCompatActivity {
             lonVal = EnterGeoInfo.lonString;
         }
             /**
-             * initiate and execute the AsyncTask class
+             * initialize and execute the AsyncTask.
              */
             NasaImageQuery req = new NasaImageQuery();
             /**
-             * populate the jason url with changed longitude and latitude
+             * modify json url with user input of longitude and latitude
              */
             //String reqUrl = "https://api.nasa.gov/planetary/earth/imagery/?lon="+lonVal+"&lat="+latVal+"&date=2014-02-01&api_key=DEMO_KEY#";
             //String reqUrl="http://dev.virtualearth.net/REST/V1/Imagery/Map/Birdseye/"+latVal+","+lonVal+"/20?dir=180&ms=200,200&key=Ahmc-zu9S2AqY2k7mJUYLXJjvEykB6U-XTb67vfsv1Wjx4dbdg0ERGAYcWLNnWAh";
@@ -140,7 +145,7 @@ public class NasaDB extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
 
         /**
-         * listen for Favorites button being clicked
+         * listen for "go to listview" button to be clicked.
          */
         Button favorites = (Button)findViewById(R.id.favoriteImage);
         favorites.setOnClickListener(click-> {
@@ -148,7 +153,9 @@ public class NasaDB extends AppCompatActivity {
             startActivity(gotoImageList);
         });
 
-        //save to listview
+        /*
+        This button is used to save the current json image and its related information to the lisview.
+         */
         Button save=(Button) findViewById(R.id.save);
         save.setOnClickListener(click->{
             ContentValues content=new ContentValues();
@@ -156,11 +163,13 @@ public class NasaDB extends AppCompatActivity {
             content.put(MyOpener.COL_LONGITUDE,lonVal);
             content.put(MyOpener.COL_LATITUDE,latVal);
             content.put(MyOpener.COL_DATE,dateStr);
-            content.put(MyOpener.COL_IMGNAME,"null");
+            content.put(MyOpener.COL_IMGNAME,imageurl);
             long id=db.insert(MyOpener.TABLE_NAME,null,content);
         });
 
-        //help
+        /*
+        This help button is used to display an alertdialog to guide user on how to use the interface.
+         */
         Button help=(Button) findViewById(R.id.help);
         help.setOnClickListener(click->{
             new AlertDialog.Builder(NasaDB.this)
@@ -182,6 +191,10 @@ public class NasaDB extends AppCompatActivity {
 
     }
 
+    /*
+    When the user click on the listview and return to this class, the json url and related info will be displayed. It has the same
+    code as the onCreate method.
+     */
     protected void onResume(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nasa_earth_db);
@@ -292,7 +305,11 @@ public class NasaDB extends AppCompatActivity {
 
     }
 
-
+    /*
+    This inner class is used to parse and process the json object. Specifically, it will parse the image url to decode and display
+    the bitmap image on the screen. And it will also display the geographical and date info on the screen by fetching the latitude
+    and longitude from user input and the date from the json object.
+     */
     public class NasaImageQuery extends AsyncTask<String, Integer, Bitmap> {
 
         @Override
@@ -328,6 +345,7 @@ public class NasaDB extends AppCompatActivity {
                 publishProgress(60);
 
                 dateStr = firstResource.getString("vintageEnd");
+                imageurl=firstResource.getString("imageUrl");
                 URL imageUrl=new URL(firstResource.getString("imageUrl"));
                 publishProgress(80);
                     HttpURLConnection connection = (HttpURLConnection) imageUrl.openConnection();
@@ -335,10 +353,10 @@ public class NasaDB extends AppCompatActivity {
 
                     int responseCode = connection.getResponseCode();
                     if (responseCode == 200) {
-                        bm = BitmapFactory.decodeStream(connection.getInputStream());
+                        bm1 = BitmapFactory.decodeStream(connection.getInputStream());
                     }
                 publishProgress(100);
-                    return bm;
+                    return bm1;
 
             } catch (Exception e) {
                 Log.e("Error", e.getMessage());
@@ -371,7 +389,8 @@ public class NasaDB extends AppCompatActivity {
             longitude.setText(getResources().getString(R.string.lonText) + " " + lonVal);
             date.setText(getResources().getString(R.string.date) + " " + dateStr);
             if(bm!=null) {
-                imageView.setImageBitmap(bm);
+                bm1=bm;
+                imageView.setImageBitmap(bm1);
             }
 
             progressBar.setVisibility(View.INVISIBLE);
