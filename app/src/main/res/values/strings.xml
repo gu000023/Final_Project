@@ -16,6 +16,9 @@
     <string name="tg_navbar_header3">Version: 1.0</string>
     <string name="tg_navbar_item1">Saved News</string>
     <string name="tg_navbar_item2">Help</string>
+    <string name="tg_navbar_item3">Go to BBC News</string>
+    <string name="tg_navbar_item4">Go to Nasa Images</string>
+    <string name="tg_navbar_item5">Go to Satellite Images</string>
     <string name="tg_st_news_activity_title">Starred News</string>
     <string name="tg_remov_dialog_title">Remove this News from Starred?</string>
     <string name="tg_remov_dialog_yes">Yes</string>

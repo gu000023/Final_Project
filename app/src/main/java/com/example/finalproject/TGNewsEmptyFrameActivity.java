@@ -4,8 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+/**
+ * Activity that is started instead of TGNewsDetailsFragment when the application is running
+ * in a phone and not in a tablet. Its only task is to start the fragment passing the bundle
+ * with the News details.
+ * @author Lilia Ramalho Martins
+ * @version 1.0
+ */
 public class TGNewsEmptyFrameActivity extends AppCompatActivity {
 
+    /**
+     * Override the method onCreate in the super class AppCompatActivity. Its only task is to
+     * start TGNewsDetailsFragment passing the bundle with the News details.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

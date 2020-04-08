@@ -17,6 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * The AsyncTask class to get data from The Guardian json.
+ * @author Lilia Ramalho Martins
+ * @version 1.0
+ */
 class TheGuardianQuery extends AsyncTask<String, Integer, List<TheGuardianArticle>> {
 
     private List<TheGuardianArticle> articles = new ArrayList<>();
@@ -26,13 +31,26 @@ class TheGuardianQuery extends AsyncTask<String, Integer, List<TheGuardianArticl
     private ProgressBar progressBar;
     private OnTGQueryCompleted listener;
 
-
+    /**
+     * Constructor with two parameters.
+     * @param progressBar ProgressBar that shows the progress while getting the information
+     *                    from json.
+     * @param listener OnTGQueryCompleted listener that will be called when AsyncTask finishes.
+     */
     public TheGuardianQuery (ProgressBar progressBar, OnTGQueryCompleted listener) {
         super();
         this.progressBar = progressBar;
         this.listener = listener;
     }
 
+    /**
+     * Overrides method doInBackground from AsyncTask. It establishes a connection with the
+     * url in The Guardian site that returns in json format the News searched with a term. The
+     * json objects are converted in TheGuardianArticle objects and added to a List that is
+     * returned in this method.
+     * @param args receive the term to be searched in the first position of the array.
+     * @return List of TheGuardianArticles objects filled with data from the json search.
+     */
     @Override
     protected List<TheGuardianArticle> doInBackground(String... args) {
         List<TheGuardianArticle> backArticles = new ArrayList<>();
@@ -76,6 +94,9 @@ class TheGuardianQuery extends AsyncTask<String, Integer, List<TheGuardianArticl
         return backArticles;
     }
 
+    /**
+     * Overrides method doProgressUpdate from AsyncTask. It set the progress in the ProgressBar.
+     */
     protected void onProgressUpdate(Integer ... args)
     {
         progressBar.setVisibility(View.VISIBLE);
@@ -83,6 +104,12 @@ class TheGuardianQuery extends AsyncTask<String, Integer, List<TheGuardianArticl
         progressBar.setProgress(progress);
     }
 
+    /**
+     * Overrides method doPostExecute from AsyncTask. When the AsyncTask is finished the method
+     * OnQueryCompleted from the OnTGQueryCompleted listener is called passing the List of
+     * resulting TheGuardianArticle objects as parameter. The ProgressBar returns to default
+     * INVISIBLE state.
+     */
     protected void onPostExecute(List<TheGuardianArticle> backArticles)
     {
         for (TheGuardianArticle element : backArticles) {

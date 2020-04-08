@@ -12,6 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * A Fragment that shows the details about a News.
+ * @author Lilia Ramalho Martins
+ * @version 1.0
+ */
 public class TGNewsDetailsFragment extends Fragment {
 
     private TextView sectionTextView;
@@ -21,10 +26,18 @@ public class TGNewsDetailsFragment extends Fragment {
     private Bundle fromTheGuardianActivity;
     private AppCompatActivity parentActivity;
 
+    /**
+     * Empty default constructor.
+     */
     public TGNewsDetailsFragment() {
         // Required empty public constructor
     }
 
+    /**
+     * Override the method onCreateView in the super class Fragment. It get the arguments
+     * from TheGuardianActivity (or StarredActivity) with the details about a News and shows
+     * them in the layout widgets. It also has a Hide button that finishes the Fragment.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,10 +79,13 @@ public class TGNewsDetailsFragment extends Fragment {
 
     }
 
+    /**
+     * Override the method onAttach that get the Activity Context and assigns it to parentActivity
+     * private field.
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
         parentActivity = (AppCompatActivity)context;
     }
 

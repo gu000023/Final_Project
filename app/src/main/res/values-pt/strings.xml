@@ -16,6 +16,9 @@
     <string name="tg_navbar_header3">Versão: 1.0</string>
     <string name="tg_navbar_item1">Notícias salvas</string>
     <string name="tg_navbar_item2">Ajuda</string>
+    <string name="tg_navbar_item3">Ir para BBC News</string>
+    <string name="tg_navbar_item4">Ir para imagens da Nasa</string>
+    <string name="tg_navbar_item5">Ir para imagens de Satelite</string>
     <string name="tg_st_news_activity_title">Notícias salvas</string>
     <string name="tg_remov_dialog_title">Remover estrela desta notícia?</string>
     <string name="tg_remov_dialog_yes">Sim</string>
