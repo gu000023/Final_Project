@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/bbc_tv5"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/bbc_tv5"
+        android:gravity="center"
+        />
+
+    <EditText
+        android:id="@+id/bbc_et3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bbc_et1"
+        android:layout_below="@+id/bbc_tv5"
+        />
+
+<!--    <Button-->
+<!--        android:id="@+id/bbc_bt6"-->
+<!--        android:layout_width="210dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/bbc_et3"-->
+<!--        android:text="@string/bbc_bt1"-->
+<!--        />-->
+
+    <Button
+        android:id="@+id/bbc_bt7"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bbc_et3"
+        android:text="@string/bbc_bt4"
+
+        />
+
+    <ListView
+        android:id="@+id/bbc_lv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bbc_bt7"
+        android:layout_above="@+id/bbc_bar3"
+        />
+
+    <ProgressBar
+        android:id="@+id/bbc_bar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        style="?android:progressBarStyleHorizontal"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BBC 新闻</string>
+    <string name="bbc_tv1">BBC 新闻</string>
+    <string name="bbc_et1">输入关键字查询</string>
+    <string name="bbc_bt1">查询</string>
+    <string name="bbc_bt2">前往我的关注</string>
+    <string name="bbc_tv5">我关注的新闻</string>
+    <string name="bbc_bt4">返回新闻列表</string>
+    <string name="bbc_bt_help">帮助</string>
+    <string name="open">打开</string>
+    <string name="close">关闭</string>
+    <string name="header_title">BBC 新闻</string>
+    <string name="header_author">朱昀</string>
+    <string name="header_version">版本号1.2</string>
+
+    <string name="help_content">1.点击按钮去收藏页面.\n
+                                2.点击按钮回到主页面.\n
+                                3.点击新闻，看到新闻内容.</string>
+    <string name="help_title">帮助页面</string>
+    <string name="help_yes">是</string>
+    <string name="help_no">不</string>
+    <string name="snackbar">开始下载!!!!</string>
+    <string name="fav_alert_title">注意</string>
+    <string name="fav_alert_message">打开新闻页面!</string>
+    <string name="fav_alert_close">关闭</string>
+    <string name="fav_snack">处理中...</string>
+    <string name="fav_toast">去新闻页面...</string>
+    <string name="main_toast">去收藏夹...</string>
+    <string name="save_button">保存</string>
+
+    <string name="fav_delete">你要删除这条新闻吗?</string>
+    <string name="fav_yes">是</string>
+    <string name="fav_no">不是</string>
+
+    <string name="item3">NASA 地球</string>
+    <string name="item4">NASA 每日一图</string>
+
+    <string name="toast_db_save">保存成功</string>
+
+</resources>
