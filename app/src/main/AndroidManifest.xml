@@ -25,6 +25,12 @@
         <activity android:name=".bbc_fav" />
         <activity android:name=".bbc_details" />
         <activity android:name=".bbc_main" />
+        <activity android:name=".DetailsFragmentZhe"></activity>
+        <activity android:name=".EmptyActivityZhe" />
+        <activity android:name=".MyOpenerZhe" />
+        <activity android:name=".ImageListZhe" />
+        <activity android:name=".NASAImageInfoZhe" />
+        <activity android:name=".NASAImageOfDaySearchZhe" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
