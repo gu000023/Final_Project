@@ -148,6 +148,18 @@ public class TheGuardianActivity extends AppCompatActivity implements OnTGQueryC
                 });
                 alertDialogBuilder.create().show();
                 break;
+            case R.id.item13:
+                Intent gotToBBC = new Intent(TheGuardianActivity.this, MainActivity.class);
+                startActivity(gotToBBC);
+                break;
+            case R.id.item14:
+                Intent gotToNasa = new Intent(TheGuardianActivity.this, MainActivity.class);
+                startActivity(gotToNasa);
+                break;
+            case R.id.item15:
+                Intent gotToSat = new Intent(TheGuardianActivity.this, MainActivity.class);
+                startActivity(gotToSat);
+                break;
         }
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
