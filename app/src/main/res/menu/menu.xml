@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="@string/bbc_bt_help"
+        app:showAsAction="always"
+        android:orderInCategory="100"
+        android:icon="@drawable/help"
+        android:id="@+id/item1"/>
+
+    <item
+        android:title="@string/bbc_tv5"
+        app:showAsAction="always"
+        android:orderInCategory="75"
+        android:icon="@drawable/fav"
+        android:id="@+id/item2"/>
+
+    <item
+        android:title="@string/item3"
+        android:id="@+id/item3"
+        app:showAsAction="always"
+        android:orderInCategory="50"
+        android:icon="@drawable/earth" />
+
+    <item
+        android:title="@string/item4"
+        android:id="@+id/item4"
+        app:showAsAction="always"
+        android:orderInCategory="25"
+        android:icon="@drawable/photo" />
+</menu>

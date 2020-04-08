@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/bbc_tv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFC107"
+        android:gravity="center"
+        android:text="News Title"
+        android:textColor="#0F0F0F"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/bbc_tv3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bbc_tv2"
+        android:gravity="center"
+        android:text="News Time"
+        android:textColor="#FFC107"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/bbc_tv4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bbc_tv3"
+        android:background="#FFC107"
+        android:text="News Content"
+        android:textColor="#141414"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/bbc_tv5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bbc_tv4"
+        android:text="Url"
+        android:textColor="#FFC107"
+        android:textSize="14sp"
+        android:textStyle="italic"
+        android:autoLink="web"
+        android:gravity="center"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="this is fragment"
+        android:layout_below="@+id/bbc_tv5"></TextView>
+
+
+    <EditText
+        android:id="@+id/bbc_et2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bbc_bt3"
+        android:layout_marginBottom="-2dp"
+        android:layout_toLeftOf="@+id/bbc_bt5"
+
+        android:text="@string/bbc_et1" />
+    <Button
+        android:id="@+id/bbc_bt8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bbc_bar2"
+        android:text="@string/save_button"/>
+
+    <Button
+        android:id="@+id/bbc_bt3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bbc_bt4"
+        android:layout_above="@+id/bbc_bar2"
+        android:layout_toRightOf="@+id/bbc_bt8"
+        />
+
+    <Button
+        android:id="@+id/bbc_bt4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bbc_bar2"
+        android:text="@string/bbc_bt2"
+        android:layout_toRightOf="@id/bbc_bt3"
+        />
+
+<!--    <Button-->
+<!--        android:id="@+id/bbc_bt5"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/bbc_bt1"-->
+<!--        android:layout_above="@id/bbc_bt3"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        />-->
+
+    <ProgressBar
+        android:id="@+id/bbc_bar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        style="?android:progressBarStyleHorizontal"
+        />
+
+</RelativeLayout>
