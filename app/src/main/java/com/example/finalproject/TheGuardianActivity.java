@@ -29,8 +29,11 @@ import com.google.android.material.navigation.NavigationView;
 import static android.widget.Toast.LENGTH_LONG;
 
 
-//Author: Lilia Ramalho Martins
-//Student # 040952491
+/**
+ * Main Activity for the Search The Guardian app.
+ * @author Lilia Ramalho Martins
+ * @version 1.0
+ */
 public class TheGuardianActivity extends AppCompatActivity implements OnTGQueryCompleted, NavigationView.OnNavigationItemSelectedListener {
 
     private ListView listView;
@@ -39,6 +42,12 @@ public class TheGuardianActivity extends AppCompatActivity implements OnTGQueryC
     private Button button;
     private Toolbar myToolbar;
 
+    /**
+     * Override the method onCreate in the super class AppCompatActivity. It loads the
+     * widgets in the layout, uses shared preferences to save the last term searched, and
+     * handles the event related to the search button calling the TheGuardianQuery with
+     * the term to be searched.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +93,10 @@ public class TheGuardianActivity extends AppCompatActivity implements OnTGQueryC
 
     }
 
+    /**
+     * Override the method onPause in the super class AppCompatActivity. It saves the last
+     * term searched to be used as shared preferences.
+     */
     @Override
     protected void onPause() {
         SharedPreferences lastTerm = getSharedPreferences("lastTerm.xml", Context.MODE_PRIVATE);
@@ -95,6 +108,11 @@ public class TheGuardianActivity extends AppCompatActivity implements OnTGQueryC
         super.onPause();
     }
 
+    /**
+     * Override the method onQueryCompleted in the interface OnTGQueryCompleted. It is called
+     * when TheGuardianQuery finishes the json query. It the load the resulting List of
+     * articles in the ListView.
+     */
     @Override
     public void onQueryCompleted(List<TheGuardianArticle> articles) {
         TGArticlesListAdapter myArticleListAdapter = new TGArticlesListAdapter(this);
@@ -104,6 +122,11 @@ public class TheGuardianActivity extends AppCompatActivity implements OnTGQueryC
         listView.setAdapter(myArticleListAdapter);
     }
 
+    /**
+     * Override the method onOptionsItemSelected in the super class AppCompatActivity. It handles
+     * the toolbar menu. In this case with only one menu item: a star to go to the
+     * StarredActivity.
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId())
@@ -117,6 +140,10 @@ public class TheGuardianActivity extends AppCompatActivity implements OnTGQueryC
         return true;
     }
 
+    /**
+     * Override the method onCreateOptionsMenu in the super class AppCompatActivity. Inflate the
+     * menu items for use in the action bar.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
@@ -126,6 +153,10 @@ public class TheGuardianActivity extends AppCompatActivity implements OnTGQueryC
         return true;
     }
 
+    /**
+     * Override the method onNavigationItemSelected in the super class AppCompatActivity. It
+     * handles the menu items in the navigation bar.
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId())
