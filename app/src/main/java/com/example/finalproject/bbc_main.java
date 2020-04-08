@@ -202,11 +202,22 @@ public class bbc_main extends AppCompatActivity implements NavigationView.OnNavi
 
         switch (item.getItemId()) {
 
-            case R.id.item2:
+            case R.id.item2: //news
                 //               message = "You clicked on mail";
-                Intent nextPage = new Intent(this, bbc_fav.class);
+                Intent nextPage = new Intent(this, TheGuardianActivity.class);
                 startActivityForResult(nextPage, 30);
                 break;
+            case R.id.item3: //earth
+                //               message = "You clicked on mail";
+                Intent nextPage2 = new Intent(this, EnterGeoInfo.class);
+                startActivityForResult(nextPage2, 30);
+                break;
+            case R.id.item4: //image
+                //               message = "You clicked on mail";
+                Intent nextPage3 = new Intent(this, NASAImageOfDaySearchZhe.class);
+                startActivityForResult(nextPage3, 30);
+                break;
+
             case R.id.item1:
                 //               message = "You clicked item 1";
                 //            Intent result = new Intent();
