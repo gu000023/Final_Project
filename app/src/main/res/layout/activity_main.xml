@@ -13,4 +13,30 @@
         android:layout_height="wrap_content"
         android:text="@string/go_to_tg_news" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="NASA image ofthe day search"
+        android:id="@+id/nasaImgBtn"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="260dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="NASA earth imagery database"
+        android:id="@+id/nasaEarthBtn"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="330dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="BBC News reader"
+        android:id="@+id/bbcBtn"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="398dp"/>
 </LinearLayout>

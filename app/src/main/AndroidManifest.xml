@@ -15,6 +15,12 @@
         <activity android:name=".StarredActivity" />
         <activity android:name=".TGNewsDetailsFragment" />
         <activity android:name=".TheGuardianActivity" />
+        <activity android:name=".ListViewForImage"/>
+        <activity android:name=".MyOpener"/>
+        <activity android:name=".NasaDB"/>
+        <activity android:name=".EnterGeoInfo"/>
+        <activity android:name=".EmptyActivity"/>
+        <activity android:name=".NasaFragment"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

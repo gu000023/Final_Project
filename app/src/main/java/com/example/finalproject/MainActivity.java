@@ -21,5 +21,13 @@ public class MainActivity extends AppCompatActivity {
             startActivity(goToChat);
         });
 
+        Button bt_NasaEarth = (Button)findViewById(R.id.nasaEarthBtn);
+        bt_NasaEarth.setOnClickListener(click-> {
+            Intent gotoNasaEarth = new Intent(MainActivity.this, EnterGeoInfo.class);
+            startActivity(gotoNasaEarth);
+
+        });
+
+
     }
 }
