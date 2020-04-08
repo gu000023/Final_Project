@@ -3,7 +3,7 @@ package com.example.finalproject;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+
 /*
  *Author: Kaiwen Gu
  *Version:1.0
@@ -15,7 +15,7 @@ public class EmptyActivity extends AppCompatActivity{
      */
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_empty);
+        setContentView(R.layout.activity_empty_gu);
 
         Bundle dataToPass=getIntent().getExtras();
 

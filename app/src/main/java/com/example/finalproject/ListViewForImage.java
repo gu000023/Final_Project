@@ -41,7 +41,7 @@ public class ListViewForImage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_list);
+        setContentView(R.layout.activity_image_list_gu);
 
         myList = (android.widget.ListView)findViewById(R.id.imageList);
 
@@ -145,7 +145,7 @@ public class ListViewForImage extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = getLayoutInflater();
-            View newView = inflater.inflate(R.layout.activity_image_list, parent, false);
+            View newView = inflater.inflate(R.layout.activity_image_list_gu, parent, false);
             TextView myText = newView.findViewById(R.id.testPage);
             myText.setText("Item " + position + " - (long: " + elements.get(position).longitude + ", lat: " + elements.get(position).latitude + ")");
 

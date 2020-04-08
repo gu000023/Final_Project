@@ -11,6 +11,8 @@ import com.google.android.material.snackbar.Snackbar;
 public class MainActivity extends AppCompatActivity {
 
     private Button goToTheGuardianButton;
+    Button button2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
             Intent gotoNasaEarth = new Intent(MainActivity.this, EnterGeoInfo.class);
             startActivity(gotoNasaEarth);
 
+        });
+
+        button2 = findViewById(R.id.button2);
+        button2.setOnClickListener((click) ->{
+            Intent project = new Intent(MainActivity.this, NASAImageOfDaySearchZhe.class);
+            startActivityForResult(project, 500);
         });
       
         Button bbc_bt_main = (Button) findViewById(R.id.bbc_bt);
