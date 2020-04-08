@@ -82,7 +82,7 @@ public class NasaDB extends AppCompatActivity {
 
     /*
     This method will obtain user input for latitude and longitude. It will also create listener to listen for use click on the three
-    buttons, "save", "go to listview" and "help".
+    buttons, "save", "go to listview" and "help"..
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
